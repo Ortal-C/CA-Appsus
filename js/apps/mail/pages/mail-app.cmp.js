@@ -2,15 +2,19 @@
 import { mailService } from '../services/mail-service.js';
 import mailList from '../cmps/mail-list.cmp.js'
 import mailMainNav from '../cmps/mail-main-nav.cmp.js'
+import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
 
 export default {
     name: 'mail',
     template: `
         <section class="mail-app main-app flex">
-            <mail-main-nav @filtered="setFilter"></mail-main-nav>
+            <mail-main-nav @directory="setDirectory"></mail-main-nav>
             <main class="mail-main-area">
+                <mail-main-area-nav @filter="setFilter"></mail-main-area-nav>
                 <nav class="flex space-between">
-                    <a href="#">Filter</a>
+                    
+                    <!-- sort-alpha-down-alt , sort-alpha-up-alt -->
+                    <!-- sort-numeric-down-alt , sort-numeric-up-alt -->
                     <a href="#">Sort by</a> 
                     <!-- ALL NONE READ UNREAD STARRED UNSTARED -->
                 </nav>
@@ -21,7 +25,8 @@ export default {
     data() {
         return {
             mails: [],
-            filterBy: 'inbox',
+            directory: 'inbox',
+            filterBy: 'all',
             loggedUser: mailService.getLoggedUser(),
         }
     },
@@ -33,14 +38,17 @@ export default {
             mailService.query()
                 .then(mails => this.mails = mails)
         },
+        setDirectory(directory){
+            this.directory = directory
+        },
         setFilter(filterBy) {
             this.filterBy = filterBy
-        }
+        },
     },
     computed: {
         displayMails() {
-            let mailsToShow;
-            switch (this.filterBy) {
+            let mailsToShow = this.mails;
+            switch (this.directory) {
                 case 'inbox':
                     mailsToShow = this.mails.filter(mail => mail.to === this.loggedUser.mail)
                     break;
@@ -55,11 +63,25 @@ export default {
                 case 'trash':
                     break;
             }
+            switch (this.filterBy) {
+                case 'starred':
+                    mailsToShow = this.mails.filter(mail => mail.isStarred)
+                    break;
+                case 'read':
+                    mailsToShow = this.mails.filter(mail => mail.isRead)
+                    break;
+                case 'unread':
+                    mailsToShow = this.mails.filter(mail => !mail.isRead)
+                    break;
+                default:
+                    break;
+            }
             return mailsToShow;
         },
     },
     components: {
         mailMainNav,
         mailList,
+        mailMainAreaNav,
     },
 };
