@@ -4,44 +4,36 @@ export default {
     name: 'note-add',
     template: `
          <section class="note-add">
-                <textarea v-model="note.info.txt" class="note-textarea" type="text" placeholder="What's on your mind?"/>
-                <button @click="add">Add note</button>
+             <form @submit.prevent="add">
+                     <input ref="txtInput" v-model="note.info.txt" class="note-input" type="text" placeholder="What's on your mind?"/>
+                     <i class="fas fa-font"></i>
+                     <i class="far fa-image"></i>
+                     <i class="fab fa-youtube"></i>
+                     <i class="fas fa-list"></i>
+                 <!-- <textarea v-model="note.info.txt" class="note-textarea" type="text" placeholder="What's on your mind?"/> -->
+                 <!-- <button>Add</button> -->
+                </form>
          </section>
     `,
     data() {
         return {
-            note: {
-                id: '',
-                type: '',
-                info: {
-                    txt: ''
-                },
-                style: {
-                    backgroundColor: '#e8eaed'
-                }
-            },
+            note: null
         }
+    },
+    created() {
+        this.note = noteService.getEmptyNote()
+    },
+    mounted() {
+        this.$refs.txtInput.focus()
     },
     methods: {
         add() {
+            if (!this.note.info.txt) return
             noteService.save(this.note)
-                .then(res => {
-                    console.log('Adding', res);
-                    this.note = {
-                        id: '',
-                        type: '',
-                        info: {
-                            txt: ''
-                        },
-                        style: {
-                            backgroundColor: '#e8eaed'
-                        }
-                    }
-                    noteService.query()
-                        .then(notes => { this.$emit('add', notes) })
-                    console.log(res)
+                .then(() => {
+                    this.note = noteService.getEmptyNote()
+                    this.$emit('add')
                 })
-            this.$emit('add')
         },
     }
 }

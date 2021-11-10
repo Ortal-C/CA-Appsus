@@ -5,14 +5,15 @@ export default {
     props: ['note'],
     template: `
         <section class="note-preview" :style="{backgroundColor}">
+                    <i class="fas fa-thumbtack"></i>
                     <p v-if="!isUpdated">{{note.info.txt}}</p>
                     <div v-if="isUpdated">
                         <textarea v-if="isUpdated" v-model="note.info.txt" cols="20" rows="5"></textarea>
                     </div>
                     <div class="actions">
-                        <button @click="remove(note.id)"><i class="fas fa-trash"></i></button>
-                        <button @click="update"><i class="fas fa-edit"></i></button>
-                        <button @click="openColors(note.id)"><i class="fas fa-palette"></i></button>
+                        <i class="fas fa-trash" @click="remove(note.id)"></i>
+                        <i class="fas fa-edit" @click="update"></i>
+                        <i class="fas fa-palette" @click="openColors(note.id)"></i>
                     </div>
                     <div>
                         <section class="colors" v-if="isShowColors">
@@ -56,8 +57,5 @@ export default {
         backgroundColor() {
             return this.note.style.backgroundColor
         },
-        colorForDisplay(color) {
-            console.log('here');
-        }
     },
 }

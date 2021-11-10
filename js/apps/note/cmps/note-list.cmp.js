@@ -8,7 +8,7 @@ export default {
         <section>
             <ul class="note-list">
                 <li v-for="note in notes" :key="note.id" class="note-preview-container">
-                    <note-preview :note="note" @remove="remove" @update="update" 
+                    <note-preview :note="note" @remove="remove" 
                     @changedColor="changedColor"></note-preview>
                 </li>
             </ul>
@@ -23,16 +23,10 @@ export default {
     methods: {
         remove(noteId) {
             noteService.remove(noteId)
-                .then(notes => this.notes = notes)
-        },
-        update() {
-            console.log('UPDATE');
-        },
-        add() {
-            this.loadNotes()
+                .then(() => this.$emit('remove'))
         },
         changedColor() {
-            this.loadNotes()
+            this.$emit('changeColor')
         }
     },
     components: {
