@@ -8,6 +8,7 @@ export default{
                 <option value="read">Read</option>
                 <option value="starred">Starred</option>
                 <option value="unread">Unread</option>
+                <option value="unstarred">Unstarred</option>
             </select>
         </nav>
     `,

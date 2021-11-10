@@ -73,6 +73,9 @@ export default {
                 case 'unread':
                     mailsToShow = this.mails.filter(mail => !mail.isRead)
                     break;
+                case 'unstarred':
+                    mailsToShow = this.mails.filter(mail => !mail.isStarred)
+                    break;
                 default:
                     break;
             }
