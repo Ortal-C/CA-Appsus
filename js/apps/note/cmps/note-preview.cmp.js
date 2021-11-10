@@ -1,5 +1,3 @@
-import { noteService } from "../services/note-service.js"
-
 export default {
     name: 'note-preview',
     props: ['notes'],
