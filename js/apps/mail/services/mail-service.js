@@ -1,4 +1,4 @@
-import { utilService } from '../../../services/util-service.js';
+import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/async-storage-service.js';
 
 const MAILS_KEY = 'mailsDB'
@@ -76,7 +76,7 @@ function _createMails() {
                 body: 'Hi mami, I really need a vacation. please do something',
                 isRead: true,
                 isStarred: false,
-                sentAt: utilService.formatDate(1416694920000),
+                sentAt:1416694920000,
                 from: 'Mami',
                 to: LOGGED_USER.mail,
             },
@@ -86,7 +86,7 @@ function _createMails() {
                 body: 'Would love to catch up sometimes',
                 isRead: false,
                 isStarred: true,
-                sentAt: utilService.formatDate(1630880520000),
+                sentAt: 1630880520000,
                 from: 'BFF',
                 to: LOGGED_USER.mail,
             },
@@ -96,7 +96,7 @@ function _createMails() {
                 body: `Check out our new summer-collection`,
                 isRead: false,
                 isStarred: false,
-                sentAt: utilService.formatDate(1625423793000),
+                sentAt: 1625423793000,
                 from: 'no-reply@store.com',
                 to: LOGGED_USER.mail,
 
@@ -107,7 +107,7 @@ function _createMails() {
                 body: `We're always looking for new ways to help you get more out of Google One. Read on to learn how you can get more out of your membership`,
                 isRead: false,
                 isStarred: false,
-                sentAt: utilService.formatDate(1483518869000),
+                sentAt: 1483518869000,
                 from: 'Google',
                 to: LOGGED_USER.mail,
             },
@@ -119,7 +119,7 @@ function _createMails() {
                 or let us know if there are any issues with your purchase by clicking the button below.`,
                 isRead: true,
                 isStarred: true,
-                sentAt: utilService.formatDate(1630083086900),
+                sentAt: 1630083086900,
                 from: 'Store',
                 to: LOGGED_USER.mail,
             },
@@ -129,7 +129,7 @@ function _createMails() {
                 body: `Check out this song-cover! https://www.youtube.com/watch?v=dU2UUkYoeBs`,
                 isRead: false,
                 isStarred: false,
-                sentAt: utilService.formatDate(1630083086900),
+                sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'John',
             },
@@ -139,7 +139,7 @@ function _createMails() {
                 body: `Hello, I love you won't you tell me your name?`,
                 isRead: false,
                 isStarred: false,
-                sentAt: utilService.formatDate(1630083086900),
+                sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'My love',
             },
@@ -149,7 +149,7 @@ function _createMails() {
                 body: `Meeting date: 05.03.2021, hour: 12:00. See you there!`,
                 isRead: true,
                 isStarred: false,
-                sentAt: utilService.formatDate(1630083086900),
+                sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'Bill Gates',
             },

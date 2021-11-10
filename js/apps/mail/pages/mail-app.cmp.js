@@ -9,7 +9,6 @@ export default {
         <section class="mail-app main-app flex">
             <mail-main-nav @filtered="setFilter"></mail-main-nav>
             <main class="mail-main-area">
-            <router-view />
                 <nav class="flex space-between">
                     <a href="#">Filter</a>
                     <a href="#">Sort by</a> 
@@ -23,6 +22,7 @@ export default {
         return {
             mails: [],
             filterBy: 'inbox',
+            loggedUser: mailService.getLoggedUser(),
         }
     },
     created() {
@@ -38,20 +38,17 @@ export default {
         }
     },
     computed: {
-        loggedUser(){
-            return mailService.getLoggedUser().mail;
-        },
         displayMails() {
             let mailsToShow;
             switch (this.filterBy) {
                 case 'inbox':
-                    mailsToShow = this.mails.filter(mail => mail.to === mailService.getLoggedUser().mail)
+                    mailsToShow = this.mails.filter(mail => mail.to === this.loggedUser.mail)
                     break;
                 case 'starred':
                     mailsToShow = this.mails.filter(mail => mail.isStarred)
                     break;
                 case 'sent':
-                    mailsToShow = this.mails.filter(mail => mail.from === mailService.getLoggedUser().mail)
+                    mailsToShow = this.mails.filter(mail => mail.from === this.loggedUser.mail)
                     break;
                 case 'drafts':
                     break;
