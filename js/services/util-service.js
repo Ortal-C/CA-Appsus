@@ -1,7 +1,8 @@
 export const utilService = {
     saveToStorage,
     loadFromStorage,
-    makeId
+    makeId,
+    formatDate
 }
 
 function saveToStorage(key, value) {
@@ -20,6 +21,11 @@ function makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+//DATE
+function formatDate(date){
+    return date.toLocaleDateString('en-US')
 }
 
 //CAPITALIZE

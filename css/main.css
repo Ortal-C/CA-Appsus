@@ -36,6 +36,7 @@ input {
 	margin: 0px 10%;
 	padding: 10px 0;
 	height: 90vh;
+	border: 1px solid lightgray;
 }
 
 /* MAIN-HEADER */
