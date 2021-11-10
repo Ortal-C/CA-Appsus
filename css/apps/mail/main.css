@@ -69,7 +69,7 @@ ul{
 
 }
 
-p .unread{
+.unread{
     font-weight: 600;
     color: #111;
 }
