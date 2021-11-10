@@ -1,3 +1,39 @@
-body{
-    background-color: #fff;
+.fas {
+	color: #5f6368;
+	margin-inline-end: 3px;
 }
+.mail-app {
+	background-color: #fff;
+}
+.mail-app > * {
+	padding: 2rem 0;
+}
+.mail-main-nav {
+	flex-direction: column;
+	flex-grow: 0.1;
+	line-height: 2.5;
+}
+.mail-main-nav a{
+    /* padding-inline-start: 50px; */
+}
+.mail-main-nav >*:hover {
+    border-end-end-radius: 10em;
+    border-start-end-radius: 10em;
+    background-color: #f5f7f7;
+}
+.mail-main-nav >*:active {
+    border-end-end-radius: 10em;
+    border-start-end-radius: 10em;
+    background-color: #fce8e6;
+}
+.btn-mail {
+	border: 1px solid #cdcecf;
+    border-radius: 10em;
+    width: 200px;
+    height: 40px;
+}
+
+.mail-main-area {
+	flex-grow: 0.98;
+}
+
