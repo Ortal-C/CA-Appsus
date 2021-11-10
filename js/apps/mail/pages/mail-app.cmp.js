@@ -14,7 +14,7 @@ export default {
                     <a href="#">Sort by</a> 
                     <!-- ALL NONE READ UNREAD STARRED UNSTARED -->
                 </nav>
-                <mail-list :mails="displayMails" :loggedUser="loggedUser"></mail-list>
+                <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
             </main>
         </section>
     `,

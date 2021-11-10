@@ -4,17 +4,20 @@ export default{
     name:'mail-preview',
     props:['mail','loggedUser'],
     template: `
-    <div class="mail-preview flex align-center" style="width:100%;">
-        <p :class="styledUnreadMail" style="width:3%"><i @click="toggleStar()" class="fas fa-star" :class="styledStarredMail"></i></p>
+    <div class="mail-preview flex align-center" style="width:100%;" >
+        <button class="btn-mail-icon" @click="toggleStar()">
+            <i class="fas fa-star" :class="styledStarredMail"></i>
+        </button>
+        <button class="btn-mail-icon" @click="toggleRead()">
+            <i :class="mailReadModeDisplay"></i>
+        </button>
         <p :class="styledUnreadMail" style="width:15%;">{{mailContactToDisplay}}</p>
         <p :class="styledUnreadMail" style="width:20%;">{{mail.subject}}</p>
         <p :class="styledUnreadMail" style="width:50%;">{{mailBodyToDisplay}}</p>
         <p :class="styledUnreadMail" style="width:12%">{{mailSentDateToDisplay}}</p>
-        <!-- <td :class="styledUnreadMail"> -->
-            <!-- <button @click="remove(mail.id)" >X</button> -->
-            <!-- <router-link :to="'/mail/'+mail.id" >>></router-link></router-link></router-link> -->
-            <!-- <router-link :to="'/mail/'+mail.id + '/edit'" >Edit</router-link> -->
-        <!-- </td> -->
+        <button class="btn-mail-icon" @click="remove()">
+            <i class="fas fa-trash" @click="toggleRead()" ></i>
+        </button>
     </div>
     `,
     data(){
@@ -24,20 +27,27 @@ export default{
         }
     },
     created(){
-        console.log(this.mail);
     },
     destroyed(){
-
     },
     methods:{
         toggleStar(){
             this.currMail.isStarred = !this.currMail.isStarred;
-            console.log(this.mail);
+        },
+        toggleRead(){
+            this.currMail.isRead = !this.currMail.isRead;
+        },
+        remove() {
+            this.$emit('remove', this.currMail.id)
         },
     },
-    computed:{
+    computed: {
         styledStarredMail(){
             return {starred: this.currMail.isStarred}
+        },
+        mailReadModeDisplay(){
+            return this.currMail.isRead ? "fas fa-envelope-open" : "fas fa-envelope"
+            
         },
         styledUnreadMail(){
             return {unread: !this.currMail.isRead}

@@ -1,13 +1,16 @@
-.fas {
+.fas, .btn-mail-icon {
 	color: #5f6368;
-	margin-inline-end: 3px;
+    background-color: transparent;
+    border: none;
+    width:1rem;
 }
+
 .mail-app {
     font-size: 16px;
 	background-color: #fff;
 }
 .mail-app > * {
-	padding: 2rem 0;
+	padding: 20px 0;
 }
 
 .mail-main-nav {
@@ -50,30 +53,26 @@
 .mail-list{
     padding:10px 0;
 }
+
+.mail-preview{
+    height: 50px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.mail-preview >* {
+    margin:0 5px;
+}
+
 .mail-preview:hover{
     background-color: #f5f7f7;
     border: 1px solid #f5f7f7;
     box-shadow: 0 1 rgba(216, 216, 216, 0.418);
     cursor: pointer;
 }
-.mail-preview{
-    height: 50px;
-    border-bottom: 1px solid rgb(236, 236, 236);
-}
-
-ul{
-    padding-inline-start: 0;
-    padding-inline-end: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-
-}
-
 .unread{
     font-weight: 600;
     color: #111;
 }
-
-p .starred{
+.starred{
     color: orange;
 }
