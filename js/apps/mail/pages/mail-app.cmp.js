@@ -1,73 +1,65 @@
 //Mail home-page
-import { emailService } from '../services/email-service.js';
-import emailList from '../cmps/email-list.cmp.js'
+import { mailService } from '../services/mail-service.js';
+import mailList from '../cmps/mail-list.cmp.js'
+import mailMainNav from '../cmps/mail-main-nav.cmp.js'
 
-export default{
+export default {
     name: 'mail',
     template: `
         <section class="mail-app main-app flex">
-            <nav class="mail-main-nav flex ">
-                <router-link to="/">
-                    <button class="btn-mail mail-compose">
-                        <i class="fas fa-plus"></i>
-                        Compose
-                    </button>
-                </router-link >
-                <router-link to="/">
-                    <i class="fas fa-inbox"></i>
-                    Inbox
-                </router-link >
-                <router-link to="/">
-                    <i class="fas fa-star"></i>
-                    Starred
-                </router-link >
-                <router-link to="/">
-                    <i class="fas fa-paper-plane"></i>
-                    Sent Mails
-                </router-link >
-                <router-link to="/">
-                    <i class="fas fa-file"></i>
-                    Drafts
-                </router-link >
-
-                <!-- Optional -->
-                <router-link to="/">
-                    <i class="fas fa-trash"></i>
-                    Trash
-                </router-link >
-
-            </nav>
+            <mail-main-nav @filtered="setFilter"></mail-main-nav>
             <main class="mail-main-area">
-                <nav>
-                    <a href="#">Filter</a> 
-                    <!-- ALL NONE READ UNREAD STARRED UNSTARED-->
+            <router-view />
+                <nav class="flex space-between">
+                    <a href="#">Filter</a>
+                    <a href="#">Sort by</a> 
+                    <!-- ALL NONE READ UNREAD STARRED UNSTARED -->
                 </nav>
-                <h1>List of mails</h1>
-                <email-list :emails="emailsToshow"></email-list>
-
+                <mail-list :mails="displayMails"></mail-list>
             </main>
         </section>
     `,
-    data(){
-        return{
-            emails: [],
+    data() {
+        return {
+            mails: [],
+            filterBy: 'inbox',
         }
     },
-    created(){
-        this.loadEmails();
+    created() {
+        this.loadMails();
     },
     methods: {
-        loadEmails() {
-            emailService.query()
-                .then(emails=> this.emails = emails)
+        loadMails() {
+            mailService.query()
+                .then(mails => this.mails = mails)
         },
+        setFilter(filterBy) {
+            this.filterBy = filterBy
+        }
     },
     computed: {
-        emailsToshow() {
-            return this.emails
+        displayMails() {
+            let mailsToShow;
+            switch (this.filterBy) {
+                case 'inbox':
+                    mailsToShow = this.mails.filter(mail => mail.to === mailService.getLoggedUser().mail)
+                    break;
+                case 'starred':
+                    mailsToShow = this.mails.filter(mail => mail.isStarred)
+                    break;
+                case 'sent':
+                    mailsToShow = this.mails.filter(mail => mail.from === mailService.getLoggedUser().mail)
+                    break;
+                case 'drafts':
+                    break;
+                case 'trash':
+                    break;
+            }
+            return mailsToShow;
         },
     },
     components: {
-        emailList,
+        mailMainNav,
+        mailList,
     },
 };

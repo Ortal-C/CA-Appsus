@@ -1,10 +1,11 @@
 import homePage from './pages/home-page.cmp.js'
 import aboutPage from './pages/about-page.cmp.js'
+
+//mailApp routes
 import mailApp from './apps/mail/pages/mail-app.cmp.js'
+
+//noteApp routes
 import noteApp from './apps/note/pages/note-app.cmp.js'
-// import carDetails from './pages/car-details.cmp.js'
-// import carSurvey from './pages/car-survey.cmp.js'
-// import carEdit from './pages/car-edit.cmp.js'
 
 const routes = [
   {
@@ -14,20 +15,32 @@ const routes = [
   {
     path: '/about',
     component: aboutPage,
-    // children: [
-    //   {
-    //     path: 'team',
-    //     component: aboutTeam,
-    //   },
-    //   {
-    //     path: 'service',
-    //     component: aboutService,
-    //   },
-    // ],
   },
   {
     path: '/mail',
     component: mailApp,
+    // children: [
+    //   {
+    //     path: 'inbox',
+    //     component: inbox,
+    //   },
+    //   {
+    //     path: 'starred',
+    //     component: starred,
+    //   },
+    //   {
+    //     path: 'sent',
+    //     component: sent,
+    //   },
+    //   {
+    //     path: 'drafts',
+    //     component: drafts,
+    //   },
+    //   {
+    //     path: 'trash',
+    //     component: trash,
+    //   },
+    // ],
   },
   {
     path: '/note',

@@ -25,7 +25,7 @@ function makeId(length = 5) {
 
 //DATE
 function formatDate(date){
-    return date.toLocaleDateString('en-US')
+    return new Date(date).toLocaleDateString('en-UK')
 }
 
 //CAPITALIZE
