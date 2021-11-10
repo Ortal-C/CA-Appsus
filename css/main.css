@@ -1,6 +1,6 @@
 @import url('./parts/helpers.css');
 @import url('./parts/fonts.css');
-@import url('apps/keep/main.css');
+@import url('apps/note/main.css');
 @import url('apps/mail/main.css');
 
 * {
