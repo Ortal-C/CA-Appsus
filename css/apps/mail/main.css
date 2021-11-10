@@ -8,15 +8,30 @@
 .mail-app > * {
 	padding: 2rem 0;
 }
+
 .mail-main-nav {
 	flex-direction: column;
-	flex-grow: 0.1;
-	line-height: 2.5;
+    max-width: 180px;
+    margin-inline-end: 10px;
 }
-.mail-main-nav a{
-    /* padding-inline-start: 50px; */
+
+.btn-mail{
+    width: 180px;
+    height: 50px;
+    text-align: left;
+    background-color: transparent;
+    border: none;
 }
-.mail-main-nav >*:hover {
+
+.btn-mail-compose {
+	border: 1px solid #cdcecf;
+    background-color: #fff;
+    border-radius: 10em;
+    text-align: center;
+    width: 180px;
+}
+
+.mail-main-nav .btn-mail:hover {
     border-end-end-radius: 10em;
     border-start-end-radius: 10em;
     background-color: #f5f7f7;
@@ -26,14 +41,24 @@
     border-start-end-radius: 10em;
     background-color: #fce8e6;
 }
-.btn-mail {
-	border: 1px solid #cdcecf;
-    border-radius: 10em;
-    width: 200px;
-    height: 40px;
-}
 
 .mail-main-area {
-	flex-grow: 0.98;
+	flex-grow: 0.9;
+    padding-inline-start: 10px;
 }
 
+table{
+    border: none;
+}
+
+tr:hover{
+    background-color: #f5f7f7;
+    border: 1px solid #f5f7f7;
+    box-shadow: 0 1 rgba(216, 216, 216, 0.418);
+    cursor: pointer;
+}
+
+td{
+    height: 50px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
