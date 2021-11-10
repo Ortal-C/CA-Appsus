@@ -5,18 +5,13 @@ import mailMainNav from '../cmps/mail-main-nav.cmp.js'
 import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
 
 export default {
-    name: 'mail',
+    name: 'mail-app',
     template: `
         <section class="mail-app main-app flex">
             <mail-main-nav @directory="setDirectory"></mail-main-nav>
             <main class="mail-main-area">
-                <mail-main-area-nav @filter="setFilter"></mail-main-area-nav>
+                <mail-main-area-nav @filter="setFilter" @sort="setSort"></mail-main-area-nav>
                 <nav class="flex space-between">
-                    
-                    <!-- sort-alpha-down-alt , sort-alpha-up-alt -->
-                    <!-- sort-numeric-down-alt , sort-numeric-up-alt -->
-                    <a href="#">Sort by</a> 
-                    <!-- ALL NONE READ UNREAD STARRED UNSTARED -->
                 </nav>
                 <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
             </main>
@@ -24,10 +19,11 @@ export default {
     `,
     data() {
         return {
+            loggedUser: mailService.getLoggedUser(),
             mails: [],
             directory: 'inbox',
             filterBy: 'all',
-            loggedUser: mailService.getLoggedUser(),
+            sortedBy: 'dateNTO',
         }
     },
     created() {
@@ -36,13 +32,33 @@ export default {
     methods: {
         loadMails() {
             mailService.query()
-                .then(mails => this.mails = mails)
+                .then(mails => {
+                    switch (this.sortedBy) {
+                        case 'dateNTO':
+                            this.mails = mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt);
+                            break;
+                        case 'dateOTN':
+                            this.mails = mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt);
+                            break;
+                        case 'titleAO':
+                            this.mails = mails.sort((mail1, mail2) => mail1.subject.toLowerCase() >= mail2.subject.toLowerCase() ? 1 : -1);
+                            break;
+                        case 'titleDO':
+                            this.mails = mails.sort((mail1, mail2) => mail2.subject.toLowerCase() >= mail1.subject.toLowerCase() ? 1 : -1);
+                            break;
+                    }
+                });
+
         },
-        setDirectory(directory){
+        setDirectory(directory) {
             this.directory = directory
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
+        },
+        setSort(sortedBy) {
+            this.sortedBy = sortedBy;
+            this.loadMails();
         },
     },
     computed: {
@@ -87,4 +103,4 @@ export default {
         mailList,
         mailMainAreaNav,
     },
-};
+}
