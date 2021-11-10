@@ -3,6 +3,7 @@
 	margin-inline-end: 3px;
 }
 .mail-app {
+    font-size: 16px;
 	background-color: #fff;
 }
 .mail-app > * {
@@ -44,27 +45,35 @@
 
 .mail-main-area {
 	flex-grow: 0.9;
-    padding-inline-start: 10px;
 }
 
-table{
-    border: none;
+.mail-list{
+    padding:10px 0;
 }
-
-tr:hover{
+.mail-preview:hover{
     background-color: #f5f7f7;
     border: 1px solid #f5f7f7;
     box-shadow: 0 1 rgba(216, 216, 216, 0.418);
     cursor: pointer;
 }
-
-td{
+.mail-preview{
     height: 50px;
     border-bottom: 1px solid rgb(236, 236, 236);
-    padding-inline-end: 10px;
 }
 
-.unread{
+ul{
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+
+}
+
+p .unread{
     font-weight: 600;
     color: #111;
+}
+
+p .starred{
+    color: orange;
 }

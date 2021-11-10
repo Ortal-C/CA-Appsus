@@ -1,39 +1,39 @@
 import mailPreview from './mail-preview.cmp.js'
 
-export default{
-    name:'mail-list',
-    props:['mails' , 'loggedUser'],
+export default {
+    name: 'mail-list',
+    props: ['mails', 'loggedUser'],
     template: `
     <section class="mail-list">
-            <table>
-                <tr v-for="mail in mails" :key="mail.id" title="click to open mail">
-                    <mail-preview :mail="mail"/>
-                </tr>    
-            </table>
+        <ul class="clean-list">
+            <li v-for="mail in mails" :key="mail.id" title="click to open mail">
+                <mail-preview :mail="mail" :loggedUser="loggedUser"/>
+            </li>    
+        </ul>
     </section>
     `,
-    data(){
-        return{
+    data() {
+        return {
 
         }
     },
-    created(){
+    created() {
 
     },
-    destroyed(){
+    destroyed() {
 
     },
-    methods:{},
-    computed:{
-        showDate(){
-            
+    methods: {},
+    computed: {
+        showDate() {
+
         },
     },
-    mounted(){
+    mounted() {
         //FOCUS SOMETHING
     },
-    watch:{},
-    components:{
+    watch: {},
+    components: {
         mailPreview,
     },
 
