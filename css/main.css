@@ -1,14 +1,16 @@
 @import url('./parts/helpers.css');
 @import url('./parts/fonts.css');
+@import url('apps/keep/main.css');
+@import url('apps/mail/main.css');
 
 * {
 	box-sizing: border-box;
-	margin:0;
+	margin: 0;
 }
 
 body {
 	margin: 0;
-	font-family: Lato ,'Montserrat', sans-serif;
+	font-family: Lato, 'Montserrat', sans-serif;
 	font-size: 1rem;
 }
 
@@ -30,7 +32,7 @@ input {
 	margin: 0px 10%;
 }
 
-.main-app{
+.main-app {
 	background-color: whitesmoke;
 	margin: 0px 10%;
 	padding: 10px 0;
@@ -39,20 +41,15 @@ input {
 
 /* MAIN-HEADER */
 
-.app-header{
+.app-header {
 	background-color: pink;
 }
 
-.app-header main{
+.app-header main {
 	height: 10vh;
 }
 
-
-.app-logo{
-	font-family: Signika ,'Montserrat', sans-serif;
+.app-logo {
+	font-family: Signika, 'Montserrat', sans-serif;
 	font-size: 40px;
 }
-
-
-
-
