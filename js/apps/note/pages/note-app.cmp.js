@@ -7,8 +7,8 @@ export default {
     name: 'note',
     template: `
         <section class="note-app main-app">
-            <note-add  @add="loadNotes"/>
-            <note-list :notes="notes" @remove="loadNotes" @changeColor="loadNotes"/>
+            <note-add @add="add"/>
+            <note-list :notes="notes" @remove="loadNotes" @changeColor="loadNotes" @update="loadNotes"/>
         </section>
     `,
     data() {
@@ -21,10 +21,17 @@ export default {
     },
     methods: {
         loadNotes() {
-            console.log('here');
+            console.log('Load notes');
             noteService.query()
-                .then(notes => this.notes = notes)
+                .then(notes => {
+                    this.notes = notes
+                })
         },
+        add(notes) {
+            console.log(notes);
+            this.notes = notes
+            this.loadNotes()
+        }
     },
     components: {
         noteAdd,

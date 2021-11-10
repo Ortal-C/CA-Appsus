@@ -38,6 +38,7 @@ function update(note) {
 }
 
 function save(note) {
+    console.log('Note id', note.info.txt);
     if (note.id) return storageService.put(NOTES_KEY, note);
     else return storageService.post(NOTES_KEY, note);
 }
@@ -72,6 +73,7 @@ function getColors() {
         { color: '#fdcfe8' },
         { color: '#e6c9a8' },
         { color: '#e8eaed' },
+        { color: '#ffffff' },
     ]
 }
 

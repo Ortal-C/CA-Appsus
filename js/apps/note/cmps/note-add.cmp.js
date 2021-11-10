@@ -4,10 +4,8 @@ export default {
     name: 'note-add',
     template: `
          <section class="note-add">
-            <form @submit.prevent="add">
-                <input v-model="note.info.txt" class="note-input" type="text" placeholder="What's on your mind?">
-                <button>Add note</button>
-            </form>
+                <textarea v-model="note.info.txt" class="note-textarea" type="text" placeholder="What's on your mind?"/>
+                <button @click="add">Add note</button>
          </section>
     `,
     data() {
@@ -19,14 +17,16 @@ export default {
                     txt: ''
                 },
                 style: {
-                    backgroundColor: '#dedede'
+                    backgroundColor: '#e8eaed'
                 }
             },
         }
-    }, methods: {
+    },
+    methods: {
         add() {
             noteService.save(this.note)
-                .then(() => {
+                .then(res => {
+                    console.log('Adding', res);
                     this.note = {
                         id: '',
                         type: '',
@@ -34,11 +34,14 @@ export default {
                             txt: ''
                         },
                         style: {
-                            backgroundColor: ''
+                            backgroundColor: '#e8eaed'
                         }
                     }
-                    this.$emit('add')
+                    noteService.query()
+                        .then(notes => { this.$emit('add', notes) })
+                    console.log(res)
                 })
+            this.$emit('add')
         },
     }
 }
