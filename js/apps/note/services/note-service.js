@@ -9,7 +9,9 @@ export const noteService = {
     remove,
     save,
     getById,
-    getEmptyNote
+    getEmptyNote,
+    update,
+    getColors
 };
 
 function query() {
@@ -31,6 +33,10 @@ function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId);
 }
 
+function update(note) {
+    return storageService.put(NOTES_KEY, note)
+}
+
 function save(note) {
     if (note.id) return storageService.put(NOTES_KEY, note);
     else return storageService.post(NOTES_KEY, note);
@@ -39,14 +45,6 @@ function save(note) {
 function getById(noteId) {
     return storageService.get(NOTES_KEY, noteId);
 }
-
-// function getNextCarId(carId) {
-//     return query()
-//         .then(cars => {
-//             const idx = cars.findIndex(car => car.id === carId);
-//             return (idx === cars.length - 1) ? cars[0].id : cars[idx + 1].id;
-//         });
-// }
 
 function getEmptyNote() {
     return {
@@ -59,6 +57,22 @@ function getEmptyNote() {
             backgroundColor: ''
         }
     }
+}
+
+function getColors() {
+    return [
+        { color: '#f28b82' },
+        { color: '#fbbc04' },
+        { color: '#fff475' },
+        { color: '#ccff90' },
+        { color: '#a7ffeb' },
+        { color: '#cbf0f8' },
+        { color: '#aecbfa' },
+        { color: '#d7aefb' },
+        { color: '#fdcfe8' },
+        { color: '#e6c9a8' },
+        { color: '#e8eaed' },
+    ]
 }
 
 function _createNotes() {
@@ -74,13 +88,16 @@ function _createNotes() {
     return notes;
 }
 
-function _createNote(type, txt) {
+function _createNote(type, txt, backgroundColor = '#e8eaed') {
     const note = {
         id: utilService.makeId(),
         type,
         isPinned: false,
         info: {
             txt
+        },
+        style: {
+            backgroundColor
         }
     };
     return note;

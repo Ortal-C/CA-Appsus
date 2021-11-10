@@ -1,31 +1,19 @@
 //NOTES PAGE
 import { noteService } from "../services/note-service.js"
-import notePreview from '../cmps/note-preview.cmp.js'
+import noteAdd from '../cmps/note-add.cmp.js'
+import noteList from '../cmps/note-list.cmp.js'
 
 export default {
     name: 'note',
     template: `
         <section class="note-app main-app">
-            <form @submit.prevent="add">
-                <input v-model="note.info.txt" class="note-input" type="text" placeholder="What's on your mind?">
-                <button>Add note</button>
-            </form>
-            <note-preview :notes="notes" @remove="remove"/>
+            <note-add  @add="loadNotes"/>
+            <note-list :notes="notes" @remove="loadNotes" @changeColor="loadNotes"/>
         </section>
     `,
     data() {
         return {
-            notes: null,
-            note: {
-                id: '',
-                type: '',
-                info: {
-                    txt: ''
-                },
-                style: {
-                    backgroundColor: ''
-                }
-            },
+            notes: null
         }
     },
     created() {
@@ -33,31 +21,13 @@ export default {
     },
     methods: {
         loadNotes() {
+            console.log('here');
             noteService.query()
                 .then(notes => this.notes = notes)
         },
-        add() {
-            noteService.save(this.note)
-                .then(() => {
-                    this.loadNotes()
-                    this.note = {
-                        id: '',
-                        type: '',
-                        info: {
-                            txt: ''
-                        },
-                        style: {
-                            backgroundColor: ''
-                        }
-                    }
-                })
-        },
-        remove(noteId) {
-            noteService.remove(noteId)
-                .then(notes => this.notes = notes)
-        }
     },
     components: {
-        notePreview
+        noteAdd,
+        noteList
     }
 };
