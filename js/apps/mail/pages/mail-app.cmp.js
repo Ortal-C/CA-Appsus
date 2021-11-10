@@ -15,7 +15,7 @@ export default {
                     <a href="#">Sort by</a> 
                     <!-- ALL NONE READ UNREAD STARRED UNSTARED -->
                 </nav>
-                <mail-list :mails="displayMails"></mail-list>
+                <mail-list :mails="displayMails" :loggedUser="loggedUser"></mail-list>
             </main>
         </section>
     `,
@@ -38,6 +38,9 @@ export default {
         }
     },
     computed: {
+        loggedUser(){
+            return mailService.getLoggedUser().mail;
+        },
         displayMails() {
             let mailsToShow;
             switch (this.filterBy) {
