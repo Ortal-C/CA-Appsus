@@ -81,16 +81,16 @@ export default {
             }
             switch (this.filterBy) {
                 case 'starred':
-                    mailsToShow = this.mails.filter(mail => mail.isStarred)
+                    mailsToShow = mailsToShow.filter(mail => mail.isStarred)
                     break;
                 case 'read':
-                    mailsToShow = this.mails.filter(mail => mail.isRead)
+                    mailsToShow = mailsToShow.filter(mail => mail.isRead)
                     break;
                 case 'unread':
-                    mailsToShow = this.mails.filter(mail => !mail.isRead)
+                    mailsToShow =  mailsToShow.filter(mail => !mail.isRead)
                     break;
                 case 'unstarred':
-                    mailsToShow = this.mails.filter(mail => !mail.isStarred)
+                    mailsToShow = mailsToShow.filter(mail => !mail.isStarred)
                     break;
                 default:
                     break;

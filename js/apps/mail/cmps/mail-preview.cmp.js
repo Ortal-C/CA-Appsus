@@ -55,7 +55,7 @@ export default{
         mailContactToDisplay(){
             return (this.currMail.from !== this.loggedUser.mail)
             ? this.currMail.from
-            : this.currMail.to
+            : 'To: '+this.currMail.to
         },
         mailBodyToDisplay(){
             if (this.isBodyLong) return this.currMail.body.substr(0, 99) + '...';
