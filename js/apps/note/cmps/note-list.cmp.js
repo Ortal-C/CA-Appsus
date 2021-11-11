@@ -8,26 +8,22 @@ export default {
         <section>
             <ul class="note-list">
                 <li v-for="note in notes" :key="note.id" class="note-preview-container">
-                    <note-preview :note="note" @remove="remove" 
-                    @changedColor="changedColor"></note-preview>
+                    <note-preview :note="note" @remove="remove" @changeColor="changeColor" @duplicate="duplicate"></note-preview>
                 </li>
             </ul>
         </section>
     `,
-    data() {
-        return {
-        }
-    },
-    created() {
-    },
     methods: {
         remove(noteId) {
             noteService.remove(noteId)
                 .then(() => this.$emit('remove'))
         },
-        changedColor() {
+        changeColor() {
             this.$emit('changeColor')
-        }
+        },
+        duplicate() {
+            this.$emit('duplicate')
+        },
     },
     components: {
         notePreview

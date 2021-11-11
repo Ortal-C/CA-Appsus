@@ -1,4 +1,5 @@
 import appHeader from './cmps/app-header.cmp.js' 
+import userMsg from './cmps/user-msg.cmp.js'
 import { router } from './routes.js';
 
 const options = {
@@ -7,12 +8,14 @@ const options = {
     router,
     template: `
         <section>
+            <user-msg />
             <app-header />
             <router-view />
         </section>
     `,
     components: {
         appHeader,
+        userMsg
     }
 };
 

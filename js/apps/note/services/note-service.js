@@ -4,39 +4,6 @@ import { storageService } from '../../../services/async-storage-service.js';
 const NOTES_KEY = 'notesDB'
 _createNotes();
 
-const gNotes = [
-    {
-        id: "n101",
-        type: "note-txt",
-        isPinned: true,
-        info: {
-            txt: "Fullstack Me Baby!"
-        }
-    },
-    {
-        id: "n102",
-        type: "note-img",
-        info: {
-            url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.medicalnewstoday.com%2Farticles%2F322868&psig=AOvVaw1r1rt2H44RP69Ol52Mngrr&ust=1636700372740000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODi1Zjej_QCFQAAAAAdAAAAABAD",
-            title: "Bobi and Me"
-        },
-        style: {
-            backgroundColor: "#00d"
-        }
-    },
-    {
-        id: "n103",
-        type: "note-todos",
-        info: {
-            label: "Get my stuff together",
-            todos: [
-                { txt: "Driving liscence", doneAt: null },
-                { txt: "Coding power", doneAt: 187111111 }
-            ]
-        }
-    }
-];
-
 export const noteService = {
     query,
     remove,
@@ -44,7 +11,8 @@ export const noteService = {
     getById,
     getEmptyNote,
     update,
-    getColors
+    getColors,
+    add
 };
 
 function query() {
@@ -75,22 +43,60 @@ function save(note) {
     else return storageService.post(NOTES_KEY, note);
 }
 
+function add(note) {
+    return storageService.post(NOTES_KEY, note);
+}
+
 function getById(noteId) {
     return storageService.get(NOTES_KEY, noteId);
 }
 
-function getEmptyNote() {
-    return {
-        id: '',
-        type: '',
-        info: {
-            txt: ''
-        },
-        style: {
-            backgroundColor: '#e8eaed'
+function getEmptyNote(type) {
+    if (type === 'note-txt') {
+        return {
+            id: '',
+            type: 'note-txt',
+            info: {
+                txt: ''
+            },
+            style: {
+                backgroundColor: '#e8eaed'
+            }
+        }
+    }
+    else if (type === 'note-img') {
+        return {
+            id: utilService.makeId(),
+            type: 'note-img',
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            },
+            style: {
+                backgroundColor: '#e8eaed'
+            }
+        };
+    }
+    else if (type === 'note-todos') {
+        return {
+            id: utilService.makeId(),
+            type: 'note-todos',
+            isPinned: false,
+            info: {
+                label: '',
+                todos: [
+                    {txt: '', createdAt: 'Date.now()'},
+                    {txt: '', createdAt: 'Date.now()'}
+                ]
+            },
+            style: {
+                backgroundColor: '#e8eaed'
+            }
         }
     }
 }
+
 
 function getColors() {
     return [
@@ -116,8 +122,8 @@ function _createNotes() {
         notes.push(_createTxtNote('What should i write?'));
         notes.push(_createTxtNote('Doing some stuff'));
         notes.push(_createTxtNote('Get your shit together'));
-        notes.push(_createImgNote("js/apps/note/img/1.jpeg", 'Shocko Moko!'))
-        notes.push(_createImgNote("js/apps/note/img/2.jpeg", 'i love u'))
+        notes.push(_createImgNote("https://static.onecms.io/wp-content/uploads/sites/20/2021/04/21/dog-nose.jpg", 'Shocko Moko!'))
+        notes.push(_createImgNote("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzAM__9nH4T5Y8YZ5_irLBSaAUx3NVl5tLkw&usqp=CAU", 'i love u'))
         notes.push(_createTodosNote('To do', [{ txt: 'Sleep', doneAt: null }, { txt: 'Eat', doneAt: 187111111 }]))
         utilService.saveToStorage(NOTES_KEY, notes);
     }
@@ -153,7 +159,7 @@ function _createImgNote(url, title) {
     };
 }
 
-function _createTodosNote(label, [todos]) {
+function _createTodosNote(label, todos = []) {
     return {
         id: utilService.makeId(),
         type: 'note-todos',
