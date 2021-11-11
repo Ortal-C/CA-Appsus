@@ -15,7 +15,7 @@ export default{
         <p :class="styledUnreadMail" style="width:20%;">{{mail.subject}}</p>
         <p :class="styledUnreadMail" style="width:50%;">{{mailBodyToDisplay}}</p>
         <p :class="styledUnreadMail" style="width:12%">{{mailSentDateToDisplay}}</p>
-        <button class="btn-mail-icon" @click="remove()">
+        <button class="btn-mail-icon" @click="remove()" >
             <i class="fas fa-trash" @click="toggleRead()" ></i>
         </button>
     </div>

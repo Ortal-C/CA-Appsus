@@ -10,7 +10,7 @@ export default {
         <section class="mail-app main-app flex">
             <mail-main-nav @directory="setDirectory"></mail-main-nav>
             <main class="mail-main-area">
-                <mail-main-area-nav @filter="setFilter" @sort="setSort"></mail-main-area-nav>
+                <mail-main-area-nav @filter="setFilter" @sort="setSort" />
                 <nav class="flex space-between">
                 </nav>
                 <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
