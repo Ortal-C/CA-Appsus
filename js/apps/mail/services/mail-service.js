@@ -146,7 +146,7 @@ function _createMails() {
             {
                 id: 'e108',
                 subject: 'Meeting at TLV',
-                body: `Meeting date: 05.03.2021, hour: 12:00. See you there!`,
+                body: `Meeting date: 05.03.2022, hour: 12:00. See you there!`,
                 isRead: true,
                 isStarred: false,
                 sentAt: 1630083086900,

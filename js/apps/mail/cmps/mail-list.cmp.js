@@ -1,3 +1,4 @@
+import { mailService } from '../services/mail-service.js'
 import mailPreview from './mail-preview.cmp.js'
 
 export default {
@@ -6,33 +7,18 @@ export default {
     template: `
     <section class="mail-list">
         <ul class="clean-list">
-            <li v-for="mail in mails" :key="mail.id" title="click to open mail">
-                <mail-preview :mail="mail" :loggedUser="loggedUser"/>
+            <li v-for="mail in mails" :key="mail.id">
+                    <mail-preview :mail="mail" :loggedUser="loggedUser" @remove="remove"/>
             </li>    
         </ul>
     </section>
     `,
-    data() {
-        return {
-
-        }
-    },
-    created() {
-
-    },
-    destroyed() {
-
-    },
-    methods: {},
-    computed: {
-        showDate() {
-
+    methods:{
+        remove(mailId) {
+            mailService.remove(mailId)
+                .then(() => this.$emit('change'))
         },
     },
-    mounted() {
-        //FOCUS SOMETHING
-    },
-    watch: {},
     components: {
         mailPreview,
     },

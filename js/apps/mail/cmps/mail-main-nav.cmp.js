@@ -2,33 +2,29 @@ export default{
     name:'mail-main-nav',
     template: `
         <nav class="mail-main-nav flex">
-            <button class="btn-mail btn-mail-compose">
+            <button class="btn-mail btn-mail-compose" @click="">
                 <i class="fas fa-plus"></i>
                 Compose
             </button>
-            <!-- <button class="btn-mail" @click="filter('all')">
-                <i class="fas fa-bars"></i>
-                All
-            </button> -->
-            <button class="btn-mail" @click="filter('inbox')">
+            <button class="btn-mail" @click="directory('inbox')">
                 <i class="fas fa-inbox"></i>
                 Inbox
             </button>
-            <button class="btn-mail" @click="filter('starred')">
+            <button class="btn-mail" @click="directory('starred')">
                 <i class="fas fa-star"></i>
                 Starred
             </button>
-            <button class="btn-mail" @click="filter('sent')">
+            <button class="btn-mail" @click="directory('sent')">
                 <i class="fas fa-paper-plane"></i>
                 Sent Mails
             </button>
-            <button class="btn-mail" @click="filter('drafts')">
+            <button class="btn-mail" @click="directory('drafts')">
                 <i class="fas fa-file"></i>
                 Drafts
             </button>
 
                 <!-- Optional -->
-            <button class="btn-mail" @click="filter('trash')">
+            <button class="btn-mail" @click="directory('trash')">
                 <i class="fas fa-trash"></i>
                 Trash
             </button>
@@ -41,8 +37,8 @@ export default{
         }
     },
     methods: {
-        filter(filterBy) {
-            this.$emit('filtered', filterBy)
+        directory(directory) {
+            this.$emit('directory', directory)
         }
     },
 }
