@@ -4,8 +4,8 @@ export default {
         <nav class="mail-main-area-nav flex space-between">
             <!-- dropdown css adjustments -->
             <section class="flex space-between">
-                <button class="btn-mail-icon" @click="toggleFilterShow"><i class="fas fa-filter"></i></button>
-                <select v-if="this.isFilterClicked" v-model="filtered" title="Filter by" @change="filter">
+                <button class="btn-mail-icon" @click="toggleFilterShow" title="Filter by" ><i class="fas fa-filter"></i></button>
+                <select v-if="this.isFilterClicked" v-model="filtered" @change="filter">
                     <option focus></option>
                     <option value="all">All</option>
                     <option value="read">Read</option>
@@ -14,7 +14,8 @@ export default {
                     <option value="unstarred">Unstarred</option>
                 </select>
             </section>
-            <input class="mail-input" type="text" placeholder="Search..."/>
+            <input v-model="filtered" @input="filter" class="mail-input" type="text" placeholder="Search..."/>
+            <!-- dropdown css adjustments -->
             <select v-model="sorted" title="Sort by" @change="sort">
                 <option value="dateNTO">Date (New to old)</option>
                 <option value="dateOTN">Date (Old to new)</option>

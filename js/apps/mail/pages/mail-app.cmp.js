@@ -60,6 +60,15 @@ export default {
             this.sortedBy = sortedBy;
             this.loadMails();
         },
+        isMailIncludeStr(mail, str) {
+            console.log(mail);
+            let subject = mail.subject.toLowerCase()
+            let body = mail.body.toLowerCase()
+            let from = mail.from.toLowerCase();
+            let to = mail.to.toLowerCase();
+            console.log([subject, body, from, to]);
+            return subject.includes(str.toLowerCase())
+        }
     },
     computed: {
         displayMails() {
@@ -87,12 +96,25 @@ export default {
                     mailsToShow = mailsToShow.filter(mail => mail.isRead)
                     break;
                 case 'unread':
-                    mailsToShow =  mailsToShow.filter(mail => !mail.isRead)
+                    mailsToShow = mailsToShow.filter(mail => !mail.isRead)
                     break;
                 case 'unstarred':
                     mailsToShow = mailsToShow.filter(mail => !mail.isStarred)
                     break;
+                case 'all':
+                    break;
+                case '':
+                    break;
                 default:
+                    mailsToShow = mailsToShow.filter(mail => {
+                        const strToSearch = this.filterBy.toLowerCase();
+                        return (
+                            mail.subject.toLowerCase().includes(strToSearch)
+                            || mail.body.toLowerCase().includes(strToSearch)
+                            || mail.from.toLowerCase().includes(strToSearch)
+                            || mail.to.toLowerCase().includes(strToSearch)
+                        )
+                    })
                     break;
             }
             return mailsToShow;
