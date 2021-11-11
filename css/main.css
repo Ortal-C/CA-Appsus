@@ -29,11 +29,11 @@ input {
 
 /* MAIN-LAYOUT */
 .main-layout {
-	margin: 0px 10%;
+	margin: 0px 5%;
 }
 
 .main-app {
-	margin: 0px 10%;
+	margin: 0px 5%;
 	padding: 10px 0;
 	height: 90vh;
 	border: 1px solid lightgray;
