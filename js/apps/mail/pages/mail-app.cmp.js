@@ -59,6 +59,7 @@ export default {
         },
         setDirectory(directory) {
             this.directory = directory
+            this.$router.push('/mail');
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
