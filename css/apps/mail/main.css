@@ -86,3 +86,25 @@
     width: 33%;
     /* border: 1px solid blueviolet; */
 }
+
+.mail-display-row{
+    display: flex;
+    flex:row wrap;
+    width: 100%;
+    border: 1px solid lightgray;
+    min-height: 2rem;
+    padding: 5px;
+}
+.mail-display-row p{
+    padding-inline-end: 20px;
+    width: 10%;
+}
+.mail-display-row:first-child{
+    background-color: #111;
+    color:white;
+    font-weight: bolder;
+    letter-spacing: 0.15em;
+}
+.mail-display-row:last-child{
+    height: 100px;
+}

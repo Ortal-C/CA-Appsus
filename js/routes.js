@@ -19,41 +19,21 @@ const routes = [
   {
     path: '/mail',
     component: mailApp,
-    // children: [
-    //   {
-    //     path: 'inbox',
-    //     component: inbox,
-    //   },
-    //   {
-    //     path: 'starred',
-    //     component: starred,
-    //   },
-    //   {
-    //     path: 'sent',
-    //     component: sent,
-    //   },
-    //   {
-    //     path: 'drafts',
-    //     component: drafts,
-    //   },
-    //   {
-    //     path: 'trash',
-    //     component: trash,
-    //   },
-    // ],
+    children: [
+      {
+        path: ':mailId?',
+        component: mailApp,
+      },
+      // {
+      //   path: ':directory',
+      //   component: mailApp,
+      // },
+    ],
   },
   {
     path: '/note',
     component: noteApp,
   },
-  // {
-  //   path: '/car/:carId?/edit',
-  //   component: carEdit,
-  // },
-  // {
-  //   path: '/car/:carId',
-  //   component: carDetails,
-  // },
 ]
 
 export const router = new VueRouter({ routes })

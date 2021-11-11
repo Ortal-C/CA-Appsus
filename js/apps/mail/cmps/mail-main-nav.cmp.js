@@ -22,8 +22,6 @@ export default{
                 <i class="fas fa-file"></i>
                 Drafts
             </button>
-
-                <!-- Optional -->
             <button class="btn-mail" @click="directory('trash')">
                 <i class="fas fa-trash"></i>
                 Trash
@@ -38,7 +36,29 @@ export default{
     },
     methods: {
         directory(directory) {
+            console.log(directory);
             this.$emit('directory', directory)
         }
     },
+    
 }
+// <!-- <router-link class="btn-mail" to="/mail/inbox" @click="getEvent">
+// <i class="fas fa-inbox"></i>
+// Inbox
+// </router-link>
+// <router-link class="btn-mail" to="/mail/starred" @click="changingRoute('starred')">
+// <i class="fas fa-star"></i>
+// Starred
+// </router-link>
+// <router-link class="btn-mail" to="/mail/sent" @click="changingRoute('sent')">
+// <i class="fas fa-paper-plane"></i>
+// Sent
+// </router-link>
+// <router-link class="btn-mail" to="/mail/drafts" @click="changingRoute('drafts')">
+// <i class="fas fa-file"></i>
+// Drafts
+// </router-link>
+// <router-link class="btn-mail" to="/mail/trash" @click="changingRoute('trash')">
+// <i class="fas fa-trash"></i>
+// Trash
+// </router-link> -->

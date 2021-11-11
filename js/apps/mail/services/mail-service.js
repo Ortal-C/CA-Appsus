@@ -79,6 +79,13 @@ function _createMails() {
                 sentAt:1416694920000,
                 from: 'Mami',
                 to: LOGGED_USER.mail,
+                criteria: {
+                    status: 'inbox',
+                    txt: 'puki',
+                    isRead: false,
+                    isStarred: false,
+                    lables: ['important', 'memories', 'romantic']
+                },
             },
             {
                 id: 'e102',
@@ -89,6 +96,13 @@ function _createMails() {
                 sentAt: 1630880520000,
                 from: 'BFF',
                 to: LOGGED_USER.mail,
+                criteria: {
+                    status: 'inbox',
+                    txt: 'puki',
+                    isRead: true,
+                    isStarred: true,
+                    lables: ['friends', 'memories']
+                },
             },
             {
                 id: 'e103',
@@ -99,17 +113,31 @@ function _createMails() {
                 sentAt: 1625423793000,
                 from: 'no-reply@store.com',
                 to: LOGGED_USER.mail,
+                criteria: {
+                    status: 'inbox',
+                    txt: 'puki',
+                    isRead: false,
+                    isStarred: true,
+                    lables: ['spam']
+                },
 
             },
             {
                 id: 'e104',
-                subject: 'Hey! see what is new for you',
-                body: `We're always looking for new ways to help you get more out of Google One. Read on to learn how you can get more out of your membership`,
+                subject: 'About your job application',
+                body: `Hello there! We were really impressed by you in our last interview meeting. Please contact me at my cell to check how we move forward.`,
                 isRead: false,
                 isStarred: false,
                 sentAt: 1483518869000,
-                from: 'Google',
+                from: 'Star(t)up',
                 to: LOGGED_USER.mail,
+                criteria: {
+                    status: 'inbox',
+                    txt: 'puki',
+                    isRead: true,
+                    isStarred: false,
+                    lables: ['critical', 'work']
+                },
             },
             {
                 id: 'e105',
@@ -122,6 +150,13 @@ function _createMails() {
                 sentAt: 1630083086900,
                 from: 'Store',
                 to: LOGGED_USER.mail,
+                criteria: {
+                    status: 'inbox',
+                    txt: 'puki',
+                    isRead: false,
+                    isStarred: false,
+                    lables: ['spam',]
+                },
             },
             {
                 id: 'e106',
@@ -132,6 +167,13 @@ function _createMails() {
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'John',
+                criteria: {
+                    status: 'sent',
+                    txt: 'puki',
+                    isRead: false,
+                    isStarred: true,
+                    lables: ['friends', 'romantic','memories']
+                },
             },
             {
                 id: 'e107',
@@ -142,6 +184,13 @@ function _createMails() {
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'My love',
+                criteria: {
+                    status: 'sent',
+                    txt: 'puki',
+                    isRead: true,
+                    isStarred: false,
+                    lables: ['romantic']
+                },
             },
             {
                 id: 'e108',
@@ -151,7 +200,14 @@ function _createMails() {
                 isStarred: false,
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
-                to: 'Bill Gates',
+                to: 'Boss',
+                criteria: {
+                    status: 'sent',
+                    txt: 'puki',
+                    isRead: false,
+                    isStarred: true,
+                    lables: ['important', 'work']
+                },
             },
 
         ];
