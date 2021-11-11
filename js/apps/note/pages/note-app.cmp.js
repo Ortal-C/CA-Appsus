@@ -1,14 +1,15 @@
 //NOTES PAGE
-import { noteService } from "../services/note-service.js"
+import { noteService } from '../services/note-service.js'
+import { eventBus } from '../../../services/event-bus-service.js'
 import noteAdd from '../cmps/note-add.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 
 export default {
-    name: 'note',
+    name: 'notes-app',
     template: `
-        <section class="note-app main-app">
+        <section class="note-app">
             <note-add @add="loadNotes"/>
-            <note-list :notes="notes" @remove="loadNotes" @changeColor="loadNotes"/>
+            <note-list :notes="notes" @remove="remove" @changeColor="changeColor" @duplicate="duplicate"/>
         </section>
     `,
     data() {
@@ -20,11 +21,30 @@ export default {
         this.loadNotes()
     },
     methods: {
+        createSuccessMsg(txt) {
+            return {
+                txt,
+                type: 'success'
+            }
+        },
         loadNotes() {
             noteService.query()
-                .then(notes => {
-                    this.notes = notes
-                })
+                .then(notes => this.notes = notes)
+        },
+        remove() {
+            this.loadNotes()
+            const msg = this.createSuccessMsg('Deleted note succesfully')
+            eventBus.$emit('showMsg', msg)
+        },
+        duplicate() {
+            this.loadNotes()
+            const msg = this.createSuccessMsg('Duplicated note succesfully')
+            eventBus.$emit('showMsg', msg)
+        },
+        changeColor() {
+            this.loadNotes()
+            const msg = this.createSuccessMsg('Changed note color succesfully')
+            eventBus.$emit('showMsg', msg)
         },
     },
     components: {

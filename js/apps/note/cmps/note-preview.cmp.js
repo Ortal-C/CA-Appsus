@@ -8,31 +8,29 @@ export default {
     props: ['note'],
     template: `
         <section class="note-preview" :style="{backgroundColor}">
-                    <i class="fas fa-thumbtack"></i>
-                    <component :note="note" :is="note.type"></component>
-                    <!-- <p v-if="!isUpdated">{{note.info.txt}}</p>
-                    <div v-if="isUpdated">
-                        <textarea v-if="isUpdated" v-model="note.info.txt" cols="20" rows="5"></textarea>
-                    </div> -->
-                    <div class="actions">
-                        <i class="fas fa-trash" @click="remove(note.id)"></i>
-                        <i class="fas fa-edit" @click="update"></i>
-                        <i class="fas fa-palette" @click="openColors(note.id)"></i>
-                    </div>
-                    <div>
-                        <section class="colors" v-if="isShowColors">
-                            <section v-for="color in colors">
-                                <div class="note-color" :style="{backgroundColor: color.color}" @click="updateColor(note.id, color.color)">.</div>
-                            </section>
-                        </section>
-                    </div>
+            <i title="Pin" class="fas fa-thumbtack" style="width: 32px;height: 32px;"></i>
+            <component :note="note" :is="note.type"></component>
+            <div class="actions">
+                <i title="Update" class="fas fa-edit" @click="update"></i>
+                <i title="Delete" class="fas fa-trash" @click="remove(note.id)"></i>
+                <i title="Change color" class="fas fa-palette" @click="openColors(note)"></i>
+                <i title="Duplicate" class="fas fa-copy" @click="duplicate(note)"></i>
+            </div>
+            <div class="colors-container">
+                <section class="colors" v-if="isShowColors">
+                    <section v-for="color in colors">
+                        <div class="note-color" :style="{backgroundColor: color.color}" @click="updateColor(note, color.color)">.</div>
+                    </section>
+                </section>
+            </div>
         </section>
     `,
     data() {
         return {
             colors: noteService.getColors(),
             isShowColors: false,
-            isUpdated: false
+            isUpdated: false,
+            notes: null
         }
     },
     methods: {
@@ -40,6 +38,7 @@ export default {
             this.$emit('remove', noteId)
         },
         update() {
+            if (this.note.type !== 'note-txt') return
             this.isUpdated = !this.isUpdated;
             noteService.update(this.note)
                 .then(() => this.$emit('update'))
@@ -47,14 +46,16 @@ export default {
         openColors() {
             this.isShowColors = !this.isShowColors
         },
-        updateColor(noteId, color) {
-            noteService.getById(noteId)
-                .then(note => {
-                    this.isShowColors = false
-                    note.style.backgroundColor = color
-                    noteService.update(note)
-                        .then(() => this.$emit('changedColor'))
-                })
+        updateColor(note, color) {
+            this.isShowColors = false
+            note.style.backgroundColor = color
+            noteService.update(note)
+                .then(() => this.$emit('changeColor'))
+        },
+        duplicate(note) {
+            const duplicatedNote = JSON.parse(JSON.stringify(note));
+            noteService.add(duplicatedNote)
+                .then(() => this.$emit('duplicate'))
         }
     },
     computed: {
