@@ -1,16 +1,9 @@
 /* MAIN APP */
 
-.note-preview textarea {
-	resize: none;
-	border: none;
-	outline: none;
-	background-color: transparent;
-}
-
 /* NOTE LIST ul */
 
 .note-list {
-	padding: 10px;
+	/* padding: 10px; */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -38,6 +31,18 @@
 	border-radius: 10px;
 }
 
+.note-preview textarea {
+	resize: none;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	border: none;
+}
+
+.note-preview img {
+	height: 150px;
+}
+
 /* ACTIONS */
 
 .note-preview i,
@@ -45,11 +50,12 @@
 	cursor: pointer;
 	color: black;
 	padding: 10px;
+	border-radius: 50%;
 }
 
 .note-preview i:hover {
-	border-radius: 50%;
-	background-color: lightgray;
+	background-color: #eeeeee;
+	transition: 0.3s;
 }
 
 .fa-thumbtack {
@@ -59,12 +65,13 @@
 .note-preview .actions {
 	display: flex;
 	justify-content: flex-end;
+	padding: 10px;
 }
 
 .note-preview .actions > *,
 .fa-thumbtack {
-	height: 40px;
-	width: 40px;
+	width: 38px;
+	margin: 5px;
 }
 
 .colors {
@@ -85,19 +92,30 @@
 
 /* NOTE ADD */
 
+.note-add {
+	padding: 3% 0;
+}
+
 .note-add form {
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+	background-color: transparent;
+	width: 98%;
+	padding: 1%;
+	margin: 1%;
+	border-radius: 5px;
+	box-shadow: rgb(0 0 0 / 27%) 0px 0px 4px 1px;
 }
 
 .note-input {
 	padding: 10px;
-	font-size: 18px;
 	width: 70%;
 	border: none;
-	border-radius: 5px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	box-shadow: rgb(0 0 0 / 27%) 0px 0px 4px 1px;
+}
+
+.note-txt-textarea {
+	height: 50px;
+	resize: none;
+	border: none;
+	outline: none;
+	line-height: 45px;
+	width: 70%;
 }

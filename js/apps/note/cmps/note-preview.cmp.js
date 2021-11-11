@@ -1,4 +1,7 @@
 import { noteService } from "../services/note-service.js"
+import noteTxt from '../cmps/note-txt.cmp.js'
+import noteImg from '../cmps/note-img.cmp.js'
+import noteTodos from '../cmps/note-todos.cmp.js'
 
 export default {
     name: 'note-preview',
@@ -6,10 +9,11 @@ export default {
     template: `
         <section class="note-preview" :style="{backgroundColor}">
                     <i class="fas fa-thumbtack"></i>
-                    <p v-if="!isUpdated">{{note.info.txt}}</p>
+                    <component :note="note" :is="note.type"></component>
+                    <!-- <p v-if="!isUpdated">{{note.info.txt}}</p>
                     <div v-if="isUpdated">
                         <textarea v-if="isUpdated" v-model="note.info.txt" cols="20" rows="5"></textarea>
-                    </div>
+                    </div> -->
                     <div class="actions">
                         <i class="fas fa-trash" @click="remove(note.id)"></i>
                         <i class="fas fa-edit" @click="update"></i>
@@ -58,4 +62,9 @@ export default {
             return this.note.style.backgroundColor
         },
     },
+    components: {
+        noteTxt,
+        noteImg,
+        noteTodos
+    }
 }
