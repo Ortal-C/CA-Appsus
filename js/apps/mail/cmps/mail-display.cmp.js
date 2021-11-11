@@ -4,7 +4,7 @@ import { utilService } from '../../../services/util-service.js';
 export default {
     name: 'mail-display',
     template: `
-        <section class="mail-display">
+        <section v-if="mail" class="mail-display">
             <header class="mail-display-row flex space-between">
                 {{mail.subject}}
                 <section class="actions">
