@@ -36,7 +36,6 @@ export default {
     },
     methods: {
         loadMails(msg) {
-            console.log(msg);
             mailService.query()
                 .then(mails => {
                     this.mails = mails;
@@ -99,7 +98,6 @@ export default {
             this.loadMails();
         },
         setSort(sortedBy) {
-            console.log(sortedBy);
             this.sortedBy = sortedBy;
             this.loadMails();
         },
