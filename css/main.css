@@ -1,5 +1,6 @@
 @import url('./parts/helpers.css');
 @import url('./parts/fonts.css');
+@import url('./home-page.css');
 @import url('apps/note/main.css');
 @import url('apps/mail/main.css');
 
@@ -42,7 +43,22 @@ input {
 /* MAIN-HEADER */
 
 .app-header {
-	background-color: pink;
+	/* background-color: pink; */
+}
+
+.app-header a {
+	padding: 5px 15px;
+	color: #acd5fd;
+	/* color: #b0d3fa; */
+	/* color: #98c5e1; */
+}
+
+.app-header .router-link-exact-active {
+	border-radius: 10em;
+	color: white;
+	background-color: #acd5fd;
+	transition: 0.5s;
+	/* background-color: #98c5e1; */
 }
 
 .app-header main {
