@@ -87,8 +87,8 @@ function getEmptyNote(type) {
             info: {
                 label: '',
                 todos: [
-                    {txt: '', createdAt: 'Date.now()'},
-                    {txt: '', createdAt: 'Date.now()'}
+                    { txt: '', createdAt: 'Date.now()' },
+                    { txt: '', createdAt: 'Date.now()' }
                 ]
             },
             style: {
@@ -120,6 +120,8 @@ function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
         notes = [];
+        notes.push(_createTxtNote('Don\'t give up on your dreams. Go back to sleep', '#ccff90'))
+        notes.push(_createTxtNote('I\'m not lazy, i\'m on energy saving mode', '#aecbfa'))
         notes.push(_createTxtNote('What should i write?'));
         notes.push(_createTxtNote('Doing some stuff'));
         notes.push(_createTxtNote('Get your shit together'));
@@ -131,7 +133,7 @@ function _createNotes() {
     return notes;
 }
 
-function _createTxtNote(txt) {
+function _createTxtNote(txt, backgroundColor = 'e8eaed') {
     return {
         id: utilService.makeId(),
         type: 'note-txt',
@@ -140,12 +142,12 @@ function _createTxtNote(txt) {
             txt
         },
         style: {
-            backgroundColor: '#e8eaed'
+            backgroundColor
         }
     };
 }
 
-function _createImgNote(url, title) {
+function _createImgNote(url, title, backgroundColor = 'e8eaed') {
     return {
         id: utilService.makeId(),
         type: 'note-img',
@@ -155,12 +157,12 @@ function _createImgNote(url, title) {
             title
         },
         style: {
-            backgroundColor: '#e8eaed'
+            backgroundColor
         }
     };
 }
 
-function _createTodosNote(label, todos = []) {
+function _createTodosNote(label, todos = [], backgroundColor = 'e8eaed') {
     return {
         id: utilService.makeId(),
         type: 'note-todos',
@@ -170,7 +172,7 @@ function _createTodosNote(label, todos = []) {
             todos,
         },
         style: {
-            backgroundColor: '#e8eaed'
+            backgroundColor
         }
     };
 }

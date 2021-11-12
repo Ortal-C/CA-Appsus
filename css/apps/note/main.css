@@ -1,4 +1,4 @@
-/* MAIN APP */
+/* MAIN NOTE APP */
 
 .note-app {
 	margin: 0px 5%;
@@ -24,16 +24,13 @@
 .note-pinned-container {
 	margin: 5px;
 	list-style: none;
-}
-
-.note-preview-container {
-	height: 100%;
+	width: auto;
 }
 
 /* NOTE SECTION */
 
 .note-preview {
-	min-width: 250px;
+	max-width: 250px;
 	padding: 10px;
 	border-radius: 10px;
 }
@@ -47,7 +44,7 @@
 }
 
 .note-preview img {
-	height: 150px;
+	height: 175px;
 	border-radius: 10px;
 	margin: 5px 0;
 }
@@ -162,8 +159,9 @@
 		height: 30px;
 	}
 	.note-preview {
-		min-width: unset;
-		max-width: 155px;
+		min-height: 160px;
+		/* min-width: unset; */
+		max-width: 145px;
 	}
 	.note-preview .actions {
 		justify-content: space-around;

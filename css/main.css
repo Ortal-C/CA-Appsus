@@ -111,3 +111,9 @@ input {
 	color: #25414c;
 	text-align: center;
 }
+
+@media (max-width: 500px) {
+	.app-header main {
+		height: 10vh;
+	}
+}

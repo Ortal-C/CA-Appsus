@@ -15,16 +15,6 @@ export default {
                 <note-preview :note="note" @pin="pin" @remove="remove" @changeColor="changeColor" @duplicate="duplicate" />
             </li>
         </ul>
-        <!-- <section class="note-list">
-            <template class="temp">
-            <div v-for="note in notes" :key="note.id" class="note-pinned-container" v-if="note.isPinned">
-                <note-preview :note="note" @pin="pin" @remove="remove" @changeColor="changeColor" @duplicate="duplicate" />
-            </div>
-            </template>
-            <div v-for="note in notes" :key="note.id" class="note-preview-container" v-if="!note.isPinned">
-                <note-preview :note="note" @pin="pin" @remove="remove" @changeColor="changeColor" @duplicate="duplicate" />
-            </div>
-        </section> -->
     `,
     methods: {
         pin() {

@@ -10,7 +10,7 @@ export default {
             </form>
             <form @submit.prevent="add" v-if="type === 'note-img'">
                 <input type="text" v-model="note.info.title" placeholder="Enter title">
-                <input type="text" v-model="note.info.url" placeholder="Enter image url">
+                <input type="url" v-model="note.info.url" placeholder="Enter image url">
                 <button><i class="fas fa-check"></i></button>
             </form>
             <form @submit.prevent="add" v-if="type === 'note-todos'">
