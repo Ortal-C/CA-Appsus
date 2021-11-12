@@ -87,7 +87,7 @@
     /* border: 1px solid blueviolet; */
 }
 
-.mail-display-row{
+.mail-details-row{
     display: flex;
     flex:row wrap;
     width: 100%;
@@ -95,16 +95,16 @@
     min-height: 2rem;
     padding: 5px;
 }
-.mail-display-row p{
+.mail-details-row p{
     padding-inline-end: 20px;
     width: 10%;
 }
-.mail-display-row:first-child{
+.mail-details-row:first-child{
     background-color: #111;
     color:white;
     font-weight: bolder;
     letter-spacing: 0.15em;
 }
-.mail-display-row:last-child{
+.mail-details-row:last-child{
     height: 100px;
 }

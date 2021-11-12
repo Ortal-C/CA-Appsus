@@ -55,15 +55,20 @@ function getNextCarId(mailId) {
 
 function getEmptyMail() {
     return {
-        id: 'e101',
+        id: makeId(),
         subject: '',
-        body: '',
-        isRead: false,
-        isStarred: false,
-        sentAt: utilService.formatDate(Date.now()),
+        body: ``,
+        sentAt: '',
         from: LOGGED_USER.mail,
         to: '',
-    };
+        criteria: {
+            status: 'draft',
+            txt: '',
+            isRead: true,
+            isStarred: false,
+            lables: [],
+        },
+    }
 }
 
 function _createMails() {
@@ -71,11 +76,9 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails = [
             {
-                id: 'e101',
+                id: 'sfv0I',
                 subject: 'Check out this vacation',
                 body: 'Hi mami, I really need a vacation. please do something',
-                isRead: true,
-                isStarred: false,
                 sentAt:1416694920000,
                 from: 'Mami',
                 to: LOGGED_USER.mail,
@@ -88,11 +91,9 @@ function _createMails() {
                 },
             },
             {
-                id: 'e102',
+                id:'tRHD8',
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
-                isRead: false,
-                isStarred: true,
                 sentAt: 1630880520000,
                 from: 'BFF',
                 to: LOGGED_USER.mail,
@@ -105,11 +106,9 @@ function _createMails() {
                 },
             },
             {
-                id: 'e103',
+                id: '2c0lb',
                 subject: 'SALE in our store',
                 body: `Check out our new summer-collection`,
-                isRead: false,
-                isStarred: false,
                 sentAt: 1625423793000,
                 from: 'no-reply@store.com',
                 to: LOGGED_USER.mail,
@@ -123,11 +122,9 @@ function _createMails() {
 
             },
             {
-                id: 'e104',
+                id:'OAZ4R',
                 subject: 'About your job application',
                 body: `Hello there! We were really impressed by you in our last interview meeting. Please contact me at my cell to check how we move forward.`,
-                isRead: false,
-                isStarred: false,
                 sentAt: 1483518869000,
                 from: 'Star(t)up',
                 to: LOGGED_USER.mail,
@@ -140,13 +137,11 @@ function _createMails() {
                 },
             },
             {
-                id: 'e105',
+                id: 'WFNU0',
                 subject: 'Are you satisfied with order?',
                 body: `Your order has been successfully delivered!
                 Please confirm with us that you have received your item,
                 or let us know if there are any issues with your purchase by clicking the button below.`,
-                isRead: true,
-                isStarred: true,
                 sentAt: 1630083086900,
                 from: 'Store',
                 to: LOGGED_USER.mail,
@@ -159,11 +154,9 @@ function _createMails() {
                 },
             },
             {
-                id: 'e106',
+                id: 'f3HEq',
                 subject: 'Stand By Me - COVER!',
                 body: `Check out this song-cover! https://www.youtube.com/watch?v=dU2UUkYoeBs`,
-                isRead: false,
-                isStarred: false,
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'John',
@@ -176,11 +169,9 @@ function _createMails() {
                 },
             },
             {
-                id: 'e107',
+                id: 'I47aH',
                 subject: 'Love you note',
                 body: `Hello, I love you won't you tell me your name?`,
-                isRead: false,
-                isStarred: false,
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'My love',
@@ -193,11 +184,9 @@ function _createMails() {
                 },
             },
             {
-                id: 'e108',
+                id: '2FCgy',
                 subject: 'Meeting at TLV',
                 body: `Meeting date: 05.03.2022, hour: 12:00. See you there!`,
-                isRead: true,
-                isStarred: false,
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
                 to: 'Boss',

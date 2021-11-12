@@ -2,7 +2,7 @@
 import { mailService } from '../services/mail-service.js';
 import mailMainNav from '../cmps/mail-main-nav.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
-import mailDisplay from '../cmps/mail-display.cmp.js'
+import mailDetails from '../cmps/mail-details.cmp.js'
 import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
 //import mailMainArea from '../cmps/mail-main-area.cmp.js'
 
@@ -10,14 +10,14 @@ export default {
     name: 'mail-app',
     template: `
         <section class="mail-app main-app flex">
-            <mail-main-nav @directory="setDirectory"/>
+            <mail-main-nav @directory="setDirectory" @compose="composeMail"/>
             <main class="mail-main-area">
                 <section v-if="!this.$route.params.mailId">
                     <mail-main-area-nav></mail-main-area-nav>
                     <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
                 </section>
                 <section v-else>
-                    <mail-display ></mail-display>
+                    <mail-details  @change="loadMails()" ></mail-details>
                 </section>
             </main>
         </section>
@@ -55,11 +55,13 @@ export default {
                     //         default: break
                     // }
                 });
-            console.log(this.mails);
         },
         setDirectory(directory) {
             this.directory = directory
             this.$router.push('/mail');
+        },
+        composeMail() {
+            mailService.getEmptyMail()
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
@@ -69,7 +71,6 @@ export default {
             this.loadMails();
         },
         isMailIncludeStr(mail, str) {
-            console.log(mail);
             let subject = mail.subject.toLowerCase()
             let body = mail.body.toLowerCase()
             let from = mail.from.toLowerCase();
@@ -84,7 +85,7 @@ export default {
         },
     },
     components: {
-        mailDisplay,
+        mailDetails,
         mailList,
         mailMainAreaNav,
         mailMainNav,

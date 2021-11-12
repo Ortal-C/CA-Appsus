@@ -8,7 +8,7 @@ export default {
     <section class="mail-list">
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id">
-                <mail-preview :mail="mail" :loggedUser="loggedUser" @remove="remove"/>
+                <mail-preview :mail="mail" :loggedUser="loggedUser" @remove="remove" @update="update"/>
             </li>    
         </ul>
     </section>
@@ -16,6 +16,10 @@ export default {
     methods:{
         remove(mailId) {
             mailService.remove(mailId)
+                .then(() => this.$emit('change'))
+        },
+        update(mail){
+            mailService.save(mail)
                 .then(() => this.$emit('change'))
         },
     },

@@ -31,9 +31,11 @@ export default{
     methods:{
         toggleStar(){
             this.currMail.criteria.isStarred = !this.currMail.criteria.isStarred;
+            this.$emit('update', this.currMail)
         },
         toggleRead(){
             this.currMail.criteria.isRead = !this.currMail.criteria.isRead;
+            this.$emit('update', this.currMail)
         },
         remove() {
             this.$emit('remove', this.currMail.id)
