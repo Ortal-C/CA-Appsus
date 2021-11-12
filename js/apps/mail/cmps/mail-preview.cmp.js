@@ -11,7 +11,7 @@ export default{
         <button class="btn-mail-icon" @click="toggleRead()">
             <i :class="mailReadModeDisplay"></i>
         </button>
-        <router-link class="flex" style="width:100%;" :to="'/mail/'+mail.id">
+        <router-link class="mail-content flex" style="width:100%;" :to="'/mail/'+mail.id">
             <p :class="styledUnreadMail" style="width:15%;">{{mailContactToDisplay}}</p>
             <p :class="styledUnreadMail" style="width:20%;">{{mail.subject}}</p>
             <long-text :txt="mail.body" :class="styledUnreadMail" style="width:50%;"/>

@@ -9,8 +9,8 @@ export default {
                 <button class="btn-mail-icon" @click="goToList()" >
                     <i class="fas fa-arrow-left"></i>
                 </button>
-                {{mail.subject}}
-                <section class="actions">
+                <article>{{mail.subject}}</article>
+                <section class="actions align-center">
                     <button class="btn-mail-icon" @click="toggleStar()">
                         <i class="fas fa-star" :class="styledStarredMail"></i>
                     </button>
@@ -38,12 +38,12 @@ export default {
                 <p>Subject:</p>
                 <textarea :disabled="!isDraft" v-model="mail.subject">{{mail.subject}}</textarea>
             </section>
-            <section class="mail-details-row">
+            <section class="mail-details-row mail-body">
                 <textarea :disabled="!isDraft" v-model="mail.body">{{mail.body}}</textarea>
             </section>
             <section v-if="isDraft" class="mail-send-actions flex space-between">
                 <button class="btn-mail-save" @click="save(true)" style="background-color:#aed1ef;">Send</button>
-                <button class="btn-mail-save" @click="save(false)" style="background-color:#e8f2fa;">Save as draft</button>
+                <button class="btn-mail-save" @click="save(false)" style="background-color:#e8f2fa; width:130px;">Save as draft</button>
                 <button class="btn-mail-save" @click="remove" style="background-color:#f5f7f7;">Discard</button>
             </section>
         </section>
