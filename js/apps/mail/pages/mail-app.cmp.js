@@ -61,23 +61,25 @@ export default {
             this.$router.push('/mail');
         },
         composeMail() {
-            mailService.getEmptyMail()
+            let newMail = mailService.getEmptyMail();
+            mailService.postNew(newMail)
+            this.$router.push(`/mail/${newMail.id}`);
         },
-        setFilter(filterBy) {
-            this.filterBy = filterBy
-        },
-        setSort(sortedBy) {
-            this.sortedBy = sortedBy;
-            this.loadMails();
-        },
-        isMailIncludeStr(mail, str) {
-            let subject = mail.subject.toLowerCase()
-            let body = mail.body.toLowerCase()
-            let from = mail.from.toLowerCase();
-            let to = mail.to.toLowerCase();
-            console.log([subject, body, from, to]);
-            return subject.includes(str.toLowerCase())
-        }
+        // setFilter(filterBy) {
+        //     this.filterBy = filterBy
+        // },
+        // setSort(sortedBy) {
+        //     this.sortedBy = sortedBy;
+        //     this.loadMails();
+        // },
+        // isMailIncludeStr(mail, str) {
+        //     let subject = mail.subject.toLowerCase()
+        //     let body = mail.body.toLowerCase()
+        //     let from = mail.from.toLowerCase();
+        //     let to = mail.to.toLowerCase();
+        //     console.log([subject, body, from, to]);
+        //     return subject.includes(str.toLowerCase())
+        // }
     },
     computed: {
         displayMails() {
@@ -85,10 +87,10 @@ export default {
         },
     },
     components: {
-        mailDetails,
-        mailList,
-        mailMainAreaNav,
         mailMainNav,
+        mailMainAreaNav,
+        mailList,
+        mailDetails,
         // mailMainAreamailMainAreaNav,
     },
 }

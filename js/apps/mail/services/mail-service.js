@@ -9,6 +9,7 @@ const LOGGED_USER = {
 _createMails();
 export const mailService = {
     query,
+    postNew,
     remove,
     save,
     getEmptyMail,
@@ -29,6 +30,10 @@ function query(filterBy = {}) {
             }
             return mails;
         });
+}
+
+function postNew(mail) {
+    return storageService.post(MAILS_KEY, mail);
 }
 
 function remove(mailId) {
@@ -55,7 +60,7 @@ function getNextCarId(mailId) {
 
 function getEmptyMail() {
     return {
-        id: makeId(),
+        id: utilService.makeId(),
         subject: '',
         body: ``,
         sentAt: '',
