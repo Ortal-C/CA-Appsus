@@ -67,7 +67,7 @@ export default {
             return this.note.style.backgroundColor
         },
         color() {
-            if (this.note.isPinned) return 'white'
+            if (this.note.isPinned) return 'orange'
             else return 'black'
         },
     },
