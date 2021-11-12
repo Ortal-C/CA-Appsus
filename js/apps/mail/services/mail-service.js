@@ -63,7 +63,7 @@ function getEmptyMail() {
         id: utilService.makeId(),
         subject: '',
         body: ``,
-        sentAt: '',
+        sentAt: Date.now(),
         from: LOGGED_USER.mail,
         to: '',
         criteria: {

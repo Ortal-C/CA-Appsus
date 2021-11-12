@@ -108,3 +108,15 @@
 .mail-details-row:last-child{
     height: 100px;
 }
+
+textarea{
+    width: 100%;
+    overflow:hidden;
+    resize: none;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+}
+textarea:disabled{
+    color: #111;
+}

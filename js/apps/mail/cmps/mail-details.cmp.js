@@ -24,26 +24,32 @@ export default {
             </header>
             <section class="mail-details-row">
                 <p>Date:</p>
-                {{mailSentDateToDisplay}}
+                <textarea disabled>{{mailSentDateToDisplay}}</textarea>
             </section>
             <section class="mail-details-row">
                 <p>From:</p>
-                {{mail.from}}
+                <textarea disabled v-model="mail.from"></textarea>
             </section>
             <section class="mail-details-row">
                 <p>To:</p>
-                {{mail.to}}
+                <textarea :disabled="!isDraft" v-model="mail.to">{{mail.to}}</textarea>
             </section>
             <section class="mail-details-row">
                 <p>Subject:</p>
-                {{mail.subject}}
+                <textarea :disabled="!isDraft" v-model="mail.subject">{{mail.subject}}</textarea>
             </section>
-            <section class="mail-details-row">{{mail.body}}</section>
+            <section class="mail-details-row">
+                <textarea :disabled="!isDraft" v-model="mail.body">{{mail.body}}</textarea>
+            </section>
+            <section>
+                <button @click="send">Send</button>
+            </section>
         </section>
     `,
     data() {
         return {
             mail: null,
+            content:{}
         }
     },
     created() {
@@ -60,7 +66,15 @@ export default {
         getMail() {
             const { mailId } = this.$route.params
             mailService.getById(mailId)
-                .then(mail => this.mail = mail);
+                .then(mail => {
+                    this.mail = mail
+                    this.content = {
+                        from: mail.from,
+                        to: mail.to,
+                        subject: mail.subject,
+                        body:mail.body
+                    }
+                });
         },
         goToList() {
             this.$router.push('/mail');
@@ -69,8 +83,7 @@ export default {
             this.mail.criteria.isStarred = !this.mail.criteria.isStarred;
             mailService.save(this.mail)
                 .then(() => this.$emit('change'))
-
-        },
+            },
         toggleRead() {
             this.mail.criteria.isRead = !this.mail.criteria.isRead;
             mailService.save(this.mail)
@@ -84,6 +97,14 @@ export default {
 
                 })
         },
+        send() {
+            this.mail.criteria.status = 'sent'
+            mailService.save(this.mail)
+                .then(() => {
+                    this.$emit('change')
+                    this.goToList()
+                })
+        },
     },
     computed: {
         styledStarredMail() {
@@ -91,6 +112,9 @@ export default {
         },
         mailSentDateToDisplay() {
             return utilService.formatDate(this.mail.sentAt);
+        },
+        isDraft() {
+            return this.mail.criteria.status === 'draft';
         },
         mailReadModeDisplay() {
             if (this.mail) {
