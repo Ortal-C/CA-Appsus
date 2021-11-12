@@ -2,7 +2,7 @@ export default{
     name:'mail-main-nav',
     template: `
         <nav class="mail-main-nav flex">
-            <button class="btn-mail btn-mail-compose" @click="">
+            <button class="btn-mail btn-mail-compose" @click="compose">
                 <i class="fas fa-plus"></i>
                 Compose
             </button>
@@ -18,7 +18,7 @@ export default{
                 <i class="fas fa-paper-plane"></i>
                 Sent Mails
             </button>
-            <button class="btn-mail" @click="directory('drafts')">
+            <button class="btn-mail" @click="directory('draft')">
                 <i class="fas fa-file"></i>
                 Drafts
             </button>
@@ -36,8 +36,10 @@ export default{
     },
     methods: {
         directory(directory) {
-            console.log(directory);
             this.$emit('directory', directory)
+        },
+        compose(){
+            this.$emit('compose')
         }
     },
     

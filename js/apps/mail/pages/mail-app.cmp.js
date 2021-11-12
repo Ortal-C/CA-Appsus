@@ -1,23 +1,22 @@
 //Mail home-page
 import { mailService } from '../services/mail-service.js';
 import mailMainNav from '../cmps/mail-main-nav.cmp.js'
-import mailList from '../cmps/mail-list.cmp.js'
-import mailDisplay from '../cmps/mail-display.cmp.js'
 import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
-//import mailMainArea from '../cmps/mail-main-area.cmp.js'
+import mailList from '../cmps/mail-list.cmp.js'
+import mailDetails from '../cmps/mail-details.cmp.js'
 
 export default {
     name: 'mail-app',
     template: `
         <section class="mail-app main-app flex">
-            <mail-main-nav @directory="setDirectory"/>
+            <mail-main-nav @directory="setDirectory" @compose="composeMail"/>
             <main class="mail-main-area">
                 <section v-if="!this.$route.params.mailId">
                     <mail-main-area-nav></mail-main-area-nav>
                     <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
                 </section>
                 <section v-else>
-                    <mail-display ></mail-display>
+                    <mail-details  @change="loadMails()" ></mail-details>
                 </section>
             </main>
         </section>
@@ -55,28 +54,31 @@ export default {
                     //         default: break
                     // }
                 });
-            console.log(this.mails);
         },
         setDirectory(directory) {
             this.directory = directory
             this.$router.push('/mail');
         },
-        setFilter(filterBy) {
-            this.filterBy = filterBy
+        composeMail() {
+            let newMail = mailService.getEmptyMail();
+            mailService.postNew(newMail)
+            this.$router.push(`/mail/${newMail.id}`);
         },
-        setSort(sortedBy) {
-            this.sortedBy = sortedBy;
-            this.loadMails();
-        },
-        isMailIncludeStr(mail, str) {
-            console.log(mail);
-            let subject = mail.subject.toLowerCase()
-            let body = mail.body.toLowerCase()
-            let from = mail.from.toLowerCase();
-            let to = mail.to.toLowerCase();
-            console.log([subject, body, from, to]);
-            return subject.includes(str.toLowerCase())
-        }
+        // setFilter(filterBy) {
+        //     this.filterBy = filterBy
+        // },
+        // setSort(sortedBy) {
+        //     this.sortedBy = sortedBy;
+        //     this.loadMails();
+        // },
+        // isMailIncludeStr(mail, str) {
+        //     let subject = mail.subject.toLowerCase()
+        //     let body = mail.body.toLowerCase()
+        //     let from = mail.from.toLowerCase();
+        //     let to = mail.to.toLowerCase();
+        //     console.log([subject, body, from, to]);
+        //     return subject.includes(str.toLowerCase())
+        // }
     },
     computed: {
         displayMails() {
@@ -84,30 +86,13 @@ export default {
         },
     },
     components: {
-        mailDisplay,
-        mailList,
-        mailMainAreaNav,
         mailMainNav,
-        // mailMainAreamailMainAreaNav,
+        mailMainAreaNav,
+        mailList,
+        mailDetails,
     },
 }
 
-
-// switch (this.directory) {
-//     case 'inbox':
-//         mailsToShow = this.mails.filter(mail => mail.to === this.loggedUser.mail)
-//         break;
-//     case 'starred':
-//         mailsToShow = this.mails.filter(mail => mail.criteria.isStarred)
-//         break;
-//     case 'sent':
-//         mailsToShow = this.mails.filter(mail => mail.from === this.loggedUser.mail)
-//         break;
-//     case 'drafts':
-//         break;
-//     case 'trash':
-//         break;
-// }
 // switch (this.filterBy) {
 //     case 'starred':
 //         mailsToShow = mailsToShow.filter(mail => mail.criteria.isStarred)
