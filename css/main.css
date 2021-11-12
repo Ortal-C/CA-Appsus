@@ -13,6 +13,8 @@ body {
 	margin: 0;
 	font-family: Lato, 'Montserrat', sans-serif;
 	font-size: 1rem;
+	/* background: url('../img/bg.jpg'); */
+	
 }
 
 a {
@@ -36,21 +38,21 @@ input {
 .main-app {
 	margin: 0px 5%;
 	padding: 10px 0;
-	height: 90vh;
-	border: 1px solid lightgray;
+	height: 85vh;
 }
 
 /* MAIN-HEADER */
-
-.app-header {
-	/* background-color: pink; */
-}
 
 .app-header a {
 	padding: 5px 15px;
 	color: #acd5fd;
 	/* color: #b0d3fa; */
 	/* color: #98c5e1; */
+}
+
+.app-nav{
+	/* width: 40%; */
+	min-width: 40%;
 }
 
 .app-header .router-link-exact-active {
@@ -62,12 +64,7 @@ input {
 }
 
 .app-header main {
-	height: 10vh;
-}
-
-.app-logo {
-	font-family: Signika, 'Montserrat', sans-serif;
-	font-size: 40px;
+	height: 15vh;
 }
 
 /* USER MSG */
@@ -102,4 +99,21 @@ input {
 .fade-enter,
 .fade-leave-to {
 	opacity: 0;
+}
+
+.home-page{
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.home-page-img{
+	width: 90%;
+}
+
+.app-logo {
+	font-family: Gurdano, 'Montserrat', sans-serif;
+	font-size: 10vw;
+	font-weight: bold;
+	color: #25414c;
+	text-align: center;
 }
