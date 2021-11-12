@@ -42,7 +42,8 @@ export default {
                 <textarea :disabled="!isDraft" v-model="mail.body">{{mail.body}}</textarea>
             </section>
             <section>
-                <button @click="send">Send</button>
+                <button @click="save(true)">Send</button>
+                <button @click="save(false)">Save as draft</button>
             </section>
         </section>
     `,
@@ -97,8 +98,8 @@ export default {
 
                 })
         },
-        send() {
-            this.mail.criteria.status = 'sent'
+        save(toSend) {
+            if (toSend) this.mail.criteria.status = 'sent'
             mailService.save(this.mail)
                 .then(() => {
                     this.$emit('change')

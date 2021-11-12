@@ -18,7 +18,7 @@ export default{
                 <i class="fas fa-paper-plane"></i>
                 Sent Mails
             </button>
-            <button class="btn-mail" @click="directory('drafts')">
+            <button class="btn-mail" @click="directory('draft')">
                 <i class="fas fa-file"></i>
                 Drafts
             </button>
