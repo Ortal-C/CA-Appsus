@@ -1,6 +1,5 @@
-@import url('./parts/helpers.css');
-@import url('./parts/fonts.css');
-@import url('./home-page.css');
+@import url('parts/helpers.css');
+@import url('parts/fonts.css');
 @import url('apps/note/main.css');
 @import url('apps/mail/main.css');
 
@@ -13,8 +12,6 @@ body {
 	margin: 0;
 	font-family: Lato, 'Montserrat', sans-serif;
 	font-size: 1rem;
-	/* background: url('../img/bg.jpg'); */
-	
 }
 
 a {
@@ -46,12 +43,9 @@ input {
 .app-header a {
 	padding: 5px 15px;
 	color: #acd5fd;
-	/* color: #b0d3fa; */
-	/* color: #98c5e1; */
 }
 
-.app-nav{
-	/* width: 40%; */
+.app-nav {
 	min-width: 40%;
 }
 
@@ -60,7 +54,6 @@ input {
 	color: white;
 	background-color: #acd5fd;
 	transition: 0.5s;
-	/* background-color: #98c5e1; */
 }
 
 .app-header main {
@@ -71,7 +64,7 @@ input {
 
 .user-msg {
 	position: absolute;
-	width: 250px;
+	width: 300px;
 	height: 65px;
 	top: 10px;
 	right: 10px;
@@ -87,6 +80,7 @@ input {
 }
 
 .user-msg p {
+	text-align: center;
 	font-size: 16px;
 	line-height: 45px;
 }
@@ -101,12 +95,12 @@ input {
 	opacity: 0;
 }
 
-.home-page{
+.home-page {
 	flex-direction: column;
 	justify-content: space-evenly;
 }
 
-.home-page-img{
+.home-page-img {
 	width: 90%;
 }
 
