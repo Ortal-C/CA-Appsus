@@ -1,5 +1,6 @@
 //Mail home-page
 import { mailService } from '../services/mail-service.js';
+import { eventBus } from '../../../services/event-bus-service.js'
 import mailMainNav from '../cmps/mail-main-nav.cmp.js'
 import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
@@ -13,10 +14,10 @@ export default {
             <main class="mail-main-area">
                 <section v-if="!this.$route.params.mailId">
                     <mail-main-area-nav @sort="setSort" @filter="setFilter"></mail-main-area-nav>
-                    <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
+                    <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails"></mail-list>
                 </section>
                 <section v-else>
-                    <mail-details @change="loadMails()"></mail-details>
+                    <mail-details @change="loadMails"></mail-details>
                 </section>
             </main>
         </section>
@@ -34,12 +35,14 @@ export default {
         this.loadMails();
     },
     methods: {
-        loadMails() {
+        loadMails(msg) {
+            console.log(msg);
             mailService.query()
                 .then(mails => {
                     this.mails = mails;
                     this.sortMails();
                 });
+            if (msg) eventBus.$emit('showMsg', {txt: msg, type: 'success'})
         },
         sortMails() {
             switch (this.sortedBy) {

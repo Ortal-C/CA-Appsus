@@ -15,7 +15,7 @@ const options = {
     `,
     components: {
         appHeader,
-        userMsg
+        userMsg,
     }
 };
 
