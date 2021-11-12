@@ -33,8 +33,6 @@ export default {
         },
         pin() {
             this.loadNotes()
-            const msg = this.createSuccessMsg('Pinned note succesfully')
-            eventBus.$emit('showMsg', msg)
         },
         remove() {
             this.loadNotes()
