@@ -9,7 +9,7 @@ export default {
     template: `
         <section class="note-app">
             <note-add @add="loadNotes"/>
-            <note-list :notes="notes" @remove="remove" @changeColor="changeColor" @duplicate="duplicate"/>
+            <note-list :notes="notes" @pin="pin" @remove="remove" @changeColor="changeColor" @duplicate="duplicate"/>
         </section>
     `,
     data() {
@@ -30,6 +30,11 @@ export default {
         loadNotes() {
             noteService.query()
                 .then(notes => this.notes = notes)
+        },
+        pin() {
+            this.loadNotes()
+            const msg = this.createSuccessMsg('Pinned note succesfully')
+            eventBus.$emit('showMsg', msg)
         },
         remove() {
             this.loadNotes()

@@ -11,6 +11,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	/* display: grid;
+	grid-template-columns: repeat(4, minmax(250px, 1fr)); */
 	padding-inline-start: 0;
 	margin-block-start: 0;
 	margin-block-end: 0;
@@ -18,9 +20,14 @@
 
 /* NOTE LIST li */
 
-.note-preview-container {
+.note-preview-container,
+.note-pinned-container {
 	margin: 5px;
 	list-style: none;
+}
+
+.note-preview-container {
+	height: 100%;
 }
 
 /* NOTE SECTION */
@@ -42,6 +49,7 @@
 .note-preview img {
 	height: 150px;
 	border-radius: 10px;
+	margin: 5px 0;
 }
 
 .note-img {
@@ -52,6 +60,10 @@
 }
 
 /* ACTIONS */
+
+.note-preview li {
+	list-style: square;
+}
 
 .note-preview i,
 .types-container span {
@@ -66,24 +78,16 @@
 	transition: 0.3s;
 }
 
-.fa-thumbtack {
-	width: 32px;
-	height: 32px;
-}
-
-.fa-edit {
-	color: black;
-}
-
 .note-preview .actions {
 	display: flex;
 	justify-content: flex-end;
-	padding: 0 5px;
+	padding: 5px;
 }
 
 .note-preview .actions > *,
 .fa-thumbtack {
 	width: 38px;
+	height: 38px;
 }
 
 .colors-container {
@@ -112,17 +116,17 @@
 /* NOTE ADD */
 
 .note-add {
-	/* background-color: thistle; */
-	margin: 1%;
-	padding: 1%;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	margin: 10px 0;
+	padding: 2%;
+	min-height: 100px;
 	border-radius: 5px;
 	box-shadow: rgb(0 0 0 / 27%) 0px 0px 4px 1px;
 }
 
 .types-container {
-	width: 30%;
 	display: flex;
 	justify-content: space-evenly;
 }
@@ -136,20 +140,54 @@
 	width: 70%;
 }
 
-.note-input {
+.note-add input {
 	border: none;
-	width: 100%;
+	width: 90%;
+	font-size: 16px;
+	font-family: Lato, 'Montserrat', sans-serif;
 }
 
-/* .note-txt-textarea {
-	height: 50px;
-	resize: none;
+.note-add button {
 	border: none;
-	outline: none;
-	line-height: 45px;
-	width: 70%;
+	background-color: transparent;
 }
 
-.note-txt {
-	padding: 5px;
-} */
+.note-txt p {
+	word-wrap: break-word;
+}
+/*
+@media (max-width: 1200px) {
+	.note-list {
+		grid-template-columns: repeat(3, minmax(150px, 1fr));
+	}
+}
+
+@media (max-width: 900px) {
+	.note-list {
+		grid-template-columns: repeat(2, minmax(150px, 1fr));
+	}
+} 
+*/
+
+@media (max-width: 600px) {
+	.types-container span {
+		width: 28px;
+		height: 30px;
+	}
+	.note-preview {
+		min-width: unset;
+		max-width: 155px;
+	}
+	.note-preview .actions {
+		justify-content: space-around;
+	}
+	.note-preview img {
+		height: 100px;
+	}
+	.note-add input {
+		width: unset;
+	}
+	.colors {
+		width: 116px;
+	}
+}

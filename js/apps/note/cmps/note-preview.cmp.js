@@ -8,18 +8,18 @@ export default {
     props: ['note'],
     template: `
         <section class="note-preview" :style="{backgroundColor}">
-            <i title="Pin" class="fas fa-thumbtack" style="width: 32px;height: 32px;"></i>
+            <i title="Pin" class="fas fa-thumbtack" @click="pin" :style={color} style="width: 32px;height: 32px;"></i>
             <component :note="note" :is="note.type"></component>
             <div class="actions">
                 <i title="Update" class="fas fa-edit" @click="update"></i>
                 <i title="Delete" class="fas fa-trash" @click="remove(note.id)"></i>
-                <i title="Change color" class="fas fa-palette" @click="openColors(note)"></i>
-                <i title="Duplicate" class="fas fa-copy" @click="duplicate(note)"></i>
+                <i title="Change color" class="fas fa-palette" @click="openColors"></i>
+                <i title="Duplicate" class="fas fa-copy" @click="duplicate"></i>
             </div>
             <div class="colors-container">
                 <section class="colors" v-if="isShowColors">
                     <section v-for="color in colors">
-                        <div class="note-color" :style="{backgroundColor: color.color}" @click="updateColor(note, color.color)">.</div>
+                        <div class="note-color" :style="{backgroundColor: color.color}" @click="updateColor(color.color)">.</div>
                     </section>
                 </section>
             </div>
@@ -30,10 +30,14 @@ export default {
             colors: noteService.getColors(),
             isShowColors: false,
             isUpdated: false,
-            notes: null
         }
     },
     methods: {
+        pin() {
+            this.note.isPinned = !this.note.isPinned
+            noteService.update(this.note)
+                .then(() => this.$emit('pin'))
+        },
         remove(noteId) {
             this.$emit('remove', noteId)
         },
@@ -46,14 +50,14 @@ export default {
         openColors() {
             this.isShowColors = !this.isShowColors
         },
-        updateColor(note, color) {
+        updateColor(color) {
             this.isShowColors = false
-            note.style.backgroundColor = color
-            noteService.update(note)
+            this.note.style.backgroundColor = color
+            noteService.update(this.note)
                 .then(() => this.$emit('changeColor'))
         },
-        duplicate(note) {
-            const duplicatedNote = JSON.parse(JSON.stringify(note));
+        duplicate() {
+            const duplicatedNote = JSON.parse(JSON.stringify(this.note));
             noteService.add(duplicatedNote)
                 .then(() => this.$emit('duplicate'))
         }
@@ -61,6 +65,10 @@ export default {
     computed: {
         backgroundColor() {
             return this.note.style.backgroundColor
+        },
+        color() {
+            if (this.note.isPinned) return 'white'
+            else return 'black'
         },
     },
     components: {

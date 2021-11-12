@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         update() {
-            this.isUpdated = !this.isUpdated
+            this.isUpdated = !this.isUpdated;
             noteService.update(this.note)
                 .then(() => this.$emit('update'))
         },
