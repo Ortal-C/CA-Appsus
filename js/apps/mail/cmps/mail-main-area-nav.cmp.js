@@ -5,7 +5,7 @@ export default {
             <!-- dropdown css adjustments -->
             <section class="flex space-between">
                 <button class="btn-mail-icon" @click="toggleFilterShow" title="Filter by" ><i class="fas fa-filter"></i></button>
-                <select v-if="this.isFilterClicked" v-model="filtered" @change="filter">
+                <select v-if="this.isFilterClicked" v-model="filtered" @change="filter" style="width:100px;">
                     <option focus></option>
                     <option value="all">All</option>
                     <option value="read">Read</option>
@@ -16,7 +16,7 @@ export default {
             </section>
             <input v-model="filtered" @input="filter" class="mail-input" type="text" placeholder="Search..."/>
             <!-- dropdown css adjustments -->
-            <select v-model="sorted" title="Sort by" @change="sort">
+            <select v-model="sorted" title="Sort by" @change="sort" style="width:100px;">
                 <option value="dateNTO">Date (New to old)</option>
                 <option value="dateOTN">Date (Old to new)</option>
                 <option value="titleAO">Title (Ascending order)</option>

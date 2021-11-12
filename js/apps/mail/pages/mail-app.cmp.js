@@ -16,7 +16,7 @@ export default {
                     <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
                 </section>
                 <section v-else>
-                    <mail-details  @change="loadMails()" ></mail-details>
+                    <mail-details @change="loadMails()"></mail-details>
                 </section>
             </main>
         </section>

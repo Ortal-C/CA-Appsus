@@ -3,30 +3,30 @@ export default{
     template: `
         <nav class="mail-main-nav flex">
             <button class="btn-mail btn-mail-compose" @click="compose">
-                <i class="fas fa-plus"></i>
-                Compose
+            <i class="fas fa-plus"></i>
+                <span>Compose</span>
             </button>
             <button class="btn-mail" @click="directory('inbox')">
                 <i class="fas fa-inbox"></i>
-                Inbox
+                <span>Inbox</span>
             </button>
-            <button class="btn-mail" @click="directory('starred')">
+            <!-- <button class="btn-mail" @click="directory('starred')">
                 <i class="fas fa-star"></i>
                 Starred
-            </button>
+            </button> -->
             <button class="btn-mail" @click="directory('sent')">
                 <i class="fas fa-paper-plane"></i>
-                Sent Mails
+                <span>Sent</span>
+                
             </button>
             <button class="btn-mail" @click="directory('draft')">
                 <i class="fas fa-file"></i>
-                Drafts
+                <span>Drafts</span>
             </button>
             <button class="btn-mail" @click="directory('trash')">
                 <i class="fas fa-trash"></i>
-                Trash
+                <span>Trash</span>
             </button>
-
         </nav>
     `,
     data(){
@@ -40,27 +40,6 @@ export default{
         },
         compose(){
             this.$emit('compose')
-        }
+        },
     },
-    
 }
-// <!-- <router-link class="btn-mail" to="/mail/inbox" @click="getEvent">
-// <i class="fas fa-inbox"></i>
-// Inbox
-// </router-link>
-// <router-link class="btn-mail" to="/mail/starred" @click="changingRoute('starred')">
-// <i class="fas fa-star"></i>
-// Starred
-// </router-link>
-// <router-link class="btn-mail" to="/mail/sent" @click="changingRoute('sent')">
-// <i class="fas fa-paper-plane"></i>
-// Sent
-// </router-link>
-// <router-link class="btn-mail" to="/mail/drafts" @click="changingRoute('drafts')">
-// <i class="fas fa-file"></i>
-// Drafts
-// </router-link>
-// <router-link class="btn-mail" to="/mail/trash" @click="changingRoute('trash')">
-// <i class="fas fa-trash"></i>
-// Trash
-// </router-link> -->
