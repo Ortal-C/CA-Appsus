@@ -41,9 +41,10 @@ export default {
             <section class="mail-details-row">
                 <textarea :disabled="!isDraft" v-model="mail.body">{{mail.body}}</textarea>
             </section>
-            <section v-if="isDraft" class="mail-send-actions">
-                <button class="btn-mail-save" @click="save(true)">Send</button>
-                <button class="btn-mail-save" @click="save(false)">Save as draft</button>
+            <section v-if="isDraft" class="mail-send-actions flex space-between">
+                <button class="btn-mail-save" @click="save(true)" style="background-color:#aed1ef;">Send</button>
+                <button class="btn-mail-save" @click="save(false)" style="background-color:#e8f2fa;">Save as draft</button>
+                <button class="btn-mail-save" @click="remove" style="background-color:#f5f7f7;">Discard</button>
             </section>
         </section>
     `,

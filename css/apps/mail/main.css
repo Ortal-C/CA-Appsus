@@ -121,11 +121,16 @@ textarea:disabled{
     color: #111;
 }
 
+.mail-send-actions{
+    margin: 10px;
+}
+
 .btn-mail-save{
 	border: 1px solid #cdcecf;
     background-color: #fff;
     border-radius: 10em;
     text-align: center;
     width: 180px;
+    height: 40px;
 
 }

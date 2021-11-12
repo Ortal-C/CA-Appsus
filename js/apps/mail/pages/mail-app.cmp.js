@@ -57,7 +57,9 @@ export default {
         },
         setDirectory(directory) {
             this.directory = directory
-            this.$router.push('/mail');
+            if (this.$route.path !== '/mail'){
+                this.$router.push('/mail');
+            }
         },
         composeMail() {
             let newMail = mailService.getEmptyMail();
