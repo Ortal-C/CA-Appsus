@@ -155,19 +155,6 @@
 .note-txt p {
 	word-wrap: break-word;
 }
-/*
-@media (max-width: 1200px) {
-	.note-list {
-		grid-template-columns: repeat(3, minmax(150px, 1fr));
-	}
-}
-
-@media (max-width: 900px) {
-	.note-list {
-		grid-template-columns: repeat(2, minmax(150px, 1fr));
-	}
-} 
-*/
 
 @media (max-width: 600px) {
 	.types-container span {
