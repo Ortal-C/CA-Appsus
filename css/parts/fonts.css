@@ -4,6 +4,7 @@
 	font-family: Lato;
 	src: url(/fonts/lato/Lato-Regular.ttf);
 }
+
 @font-face {
 	font-family: fa-solid;
 	src: url(/fonts/fa/fa-solid-900.ttf);
@@ -13,5 +14,3 @@
 	font-family: Gurdano;
 	src: url(/fonts/gurdano/gurdano.otf);
 }
-
-/* Signika: 'Montserrat', sans-serif; */

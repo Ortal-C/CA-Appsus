@@ -43,7 +43,7 @@
 .mail-main-nav >*:focus {
     border-end-end-radius: 10em;
     border-start-end-radius: 10em;
-    background-color: #fce8e6;
+    background-color: #e8f2fa;
 }
 
 .mail-main-area {
@@ -119,4 +119,13 @@ textarea{
 }
 textarea:disabled{
     color: #111;
+}
+
+.btn-mail-save{
+	border: 1px solid #cdcecf;
+    background-color: #fff;
+    border-radius: 10em;
+    text-align: center;
+    width: 180px;
+
 }

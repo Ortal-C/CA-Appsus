@@ -1,5 +1,5 @@
 import { utilService } from '../../../services/util-service.js'
-
+import longText from '../../../cmps/long-text.cmp.js'
 export default{
     name:'mail-preview',
     props:['mail','loggedUser'],
@@ -14,7 +14,7 @@ export default{
         <router-link class="flex" style="width:100%;" :to="'/mail/'+mail.id">
             <p :class="styledUnreadMail" style="width:15%;">{{mailContactToDisplay}}</p>
             <p :class="styledUnreadMail" style="width:20%;">{{mail.subject}}</p>
-            <p :class="styledUnreadMail" style="width:50%;">{{mailBodyToDisplay}}</p>
+            <long-text :txt="mail.body" :class="styledUnreadMail" style="width:50%;"/>
             <p :class="styledUnreadMail" style="width:12%">{{mailSentDateToDisplay}}</p>
         </router-link>
         <button class="btn-mail-icon" @click="remove()" >
@@ -69,6 +69,8 @@ export default{
         //FOCUS SOMETHING
     },
     watch:{},
-    components:{},
+    components:{
+        longText,
+    },
 
 }
