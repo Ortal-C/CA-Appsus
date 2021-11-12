@@ -12,7 +12,7 @@ export default {
             <mail-main-nav @directory="setDirectory" @compose="composeMail"/>
             <main class="mail-main-area">
                 <section v-if="!this.$route.params.mailId">
-                    <mail-main-area-nav></mail-main-area-nav>
+                    <mail-main-area-nav @sort="setSort" @filter="setFilter"></mail-main-area-nav>
                     <mail-list :mails="displayMails" :loggedUser="loggedUser" @change="loadMails()"></mail-list>
                 </section>
                 <section v-else>
@@ -26,8 +26,8 @@ export default {
             loggedUser: mailService.getLoggedUser(),
             mails: [],
             directory: 'inbox',
-            // filterBy: 'all',
-            // sortedBy: 'dateNTO',
+            filterBy: 'all',
+            sortedBy: 'dateNTO',
         }
     },
     created() {
@@ -38,26 +38,51 @@ export default {
             mailService.query()
                 .then(mails => {
                     this.mails = mails;
-                    // switch (this.sortedBy) {
-                    //     case 'dateNTO':
-                    //         this.mails = mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt);
-                    //         break;
-                    //     case 'dateOTN':
-                    //         this.mails = mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt);
-                    //         break;
-                    //     case 'titleAO':
-                    //         this.mails = mails.sort((mail1, mail2) => mail1.subject.toLowerCase() >= mail2.subject.toLowerCase() ? 1 : -1);
-                    //         break;
-                    //     case 'titleDO':
-                    //         this.mails = mails.sort((mail1, mail2) => mail2.subject.toLowerCase() >= mail1.subject.toLowerCase() ? 1 : -1);
-                    //         break;
-                    //         default: break
-                    // }
+                    this.sortMails();
                 });
+        },
+        sortMails() {
+            switch (this.sortedBy) {
+                case 'dateNTO':
+                    this.mails = this.mails.sort((mail1, mail2) => mail2.sentAt - mail1.sentAt);
+                    break;
+                case 'dateOTN':
+                    this.mails = this.mails.sort((mail1, mail2) => mail1.sentAt - mail2.sentAt);
+                    break;
+                case 'titleAO':
+                    this.mails = this.mails.sort((mail1, mail2) => mail1.subject.toLowerCase() >= mail2.subject.toLowerCase() ? 1 : -1);
+                    break;
+                case 'titleDO':
+                    this.mails = this.mails.sort((mail1, mail2) => mail2.subject.toLowerCase() >= mail1.subject.toLowerCase() ? 1 : -1);
+                    break;
+                default: break
+            }
+        },
+        filterMails() {
+            let mailsToFilter = this.mails;
+            switch (this.filterBy) {
+                case 'starred':
+                    mailsToFilter = this.mails.filter(mail => mail.criteria.isStarred)
+                    break;
+                case 'read':
+                    mailsToFilter = this.mails.filter(mail => mail.criteria.isRead)
+                    break;
+                case 'unread':
+                    mailsToFilter = this.mails.filter(mail => !mail.criteria.isRead)
+                    break;
+                case 'unstarred':
+                    mailsToFilter = this.mails.filter(mail => !mail.criteria.isStarred)
+                    break;
+                default:
+                    if (['all', ''].includes(this.filterBy)) break;
+                    mailsToFilter = this.mails.filter(mail => this.isMailIncludeStr(mail, this.filterBy))
+                    break;
+            }
+            return mailsToFilter
         },
         setDirectory(directory) {
             this.directory = directory
-            if (this.$route.path !== '/mail'){
+            if (this.$route.path !== '/mail') {
                 this.$router.push('/mail');
             }
         },
@@ -66,25 +91,27 @@ export default {
             mailService.postNew(newMail)
             this.$router.push(`/mail/${newMail.id}`);
         },
-        // setFilter(filterBy) {
-        //     this.filterBy = filterBy
-        // },
-        // setSort(sortedBy) {
-        //     this.sortedBy = sortedBy;
-        //     this.loadMails();
-        // },
-        // isMailIncludeStr(mail, str) {
-        //     let subject = mail.subject.toLowerCase()
-        //     let body = mail.body.toLowerCase()
-        //     let from = mail.from.toLowerCase();
-        //     let to = mail.to.toLowerCase();
-        //     console.log([subject, body, from, to]);
-        //     return subject.includes(str.toLowerCase())
-        // }
+        setFilter(filterBy) {
+            this.filterBy = filterBy
+            this.loadMails();
+        },
+        setSort(sortedBy) {
+            console.log(sortedBy);
+            this.sortedBy = sortedBy;
+            this.loadMails();
+        },
+        isMailIncludeStr(mail, str) {
+            const tempStr = str.toLowerCase();
+            return mail.subject.toLowerCase().includes(tempStr) ||
+                mail.body.toLowerCase().includes(tempStr) ||
+                mail.from.toLowerCase().includes(tempStr) ||
+                mail.to.toLowerCase().includes(tempStr)
+        }
     },
     computed: {
         displayMails() {
-            return this.mails.filter(mail => mail.criteria.status === this.directory);
+            let mails = this.filterMails();
+            return mails.filter(mail => mail.criteria.status === this.directory);
         },
     },
     components: {
@@ -94,33 +121,3 @@ export default {
         mailDetails,
     },
 }
-
-// switch (this.filterBy) {
-//     case 'starred':
-//         mailsToShow = mailsToShow.filter(mail => mail.criteria.isStarred)
-//         break;
-//     case 'read':
-//         mailsToShow = mailsToShow.filter(mail => mail.criteria.isRead)
-//         break;
-//     case 'unread':
-//         mailsToShow = mailsToShow.filter(mail => !mail.criteria.isRead)
-//         break;
-//     case 'unstarred':
-//         mailsToShow = mailsToShow.filter(mail => !mail.criteria.isStarred)
-//         break;
-//     case 'all':
-//         break;
-//     case '':
-//         break;
-//     default:
-//         mailsToShow = mailsToShow.filter(mail => {
-//             const strToSearch = this.filterBy.toLowerCase();
-//             return (
-//                 mail.subject.toLowerCase().includes(strToSearch)
-//                 || mail.body.toLowerCase().includes(strToSearch)
-//                 || mail.from.toLowerCase().includes(strToSearch)
-//                 || mail.to.toLowerCase().includes(strToSearch)
-//             )
-//         })
-//         break;
-// }

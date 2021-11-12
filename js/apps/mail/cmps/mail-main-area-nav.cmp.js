@@ -34,13 +34,13 @@ export default {
     },
     methods: {
         filter() {
-            this.$emit('filter', this.filtered)
+            this.$emit('filter', `${this.filtered}`)
         },
         toggleFilterShow() {
             this.isFilterClicked = !this.isFilterClicked
         },
         sort() {
-            this.$emit('sort', this.sorted)
+            this.$emit('sort', `${this.sorted}`)
         },
     },
 }
