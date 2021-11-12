@@ -1,10 +1,9 @@
 //Mail home-page
 import { mailService } from '../services/mail-service.js';
 import mailMainNav from '../cmps/mail-main-nav.cmp.js'
+import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailDetails from '../cmps/mail-details.cmp.js'
-import mailMainAreaNav from '../cmps/mail-main-area-nav.cmp.js'
-//import mailMainArea from '../cmps/mail-main-area.cmp.js'
 
 export default {
     name: 'mail-app',
@@ -91,26 +90,9 @@ export default {
         mailMainAreaNav,
         mailList,
         mailDetails,
-        // mailMainAreamailMainAreaNav,
     },
 }
 
-
-// switch (this.directory) {
-//     case 'inbox':
-//         mailsToShow = this.mails.filter(mail => mail.to === this.loggedUser.mail)
-//         break;
-//     case 'starred':
-//         mailsToShow = this.mails.filter(mail => mail.criteria.isStarred)
-//         break;
-//     case 'sent':
-//         mailsToShow = this.mails.filter(mail => mail.from === this.loggedUser.mail)
-//         break;
-//     case 'drafts':
-//         break;
-//     case 'trash':
-//         break;
-// }
 // switch (this.filterBy) {
 //     case 'starred':
 //         mailsToShow = mailsToShow.filter(mail => mail.criteria.isStarred)
