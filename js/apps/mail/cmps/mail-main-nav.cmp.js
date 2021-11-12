@@ -1,14 +1,14 @@
 export default{
     name:'mail-main-nav',
     template: `
-        <nav class="mail-main-nav flex space-between">
+        <nav class="mail-main-nav flex">
             <button class="btn-mail btn-mail-compose" @click="compose">
             <i class="fas fa-plus"></i>
-                <!-- Compose -->
+                <span>Compose</span>
             </button>
             <button class="btn-mail" @click="directory('inbox')">
                 <i class="fas fa-inbox"></i>
-                <!-- Inbox -->
+                <span>Inbox</span>
             </button>
             <!-- <button class="btn-mail" @click="directory('starred')">
                 <i class="fas fa-star"></i>
@@ -16,15 +16,16 @@ export default{
             </button> -->
             <button class="btn-mail" @click="directory('sent')">
                 <i class="fas fa-paper-plane"></i>
-                <!-- Sent Mails -->
+                <span>Sent</span>
+                
             </button>
             <button class="btn-mail" @click="directory('draft')">
                 <i class="fas fa-file"></i>
-                <!-- Drafts -->
+                <span>Drafts</span>
             </button>
             <button class="btn-mail" @click="directory('trash')">
                 <i class="fas fa-trash"></i>
-                <!-- Trash -->
+                <span>Trash</span>
             </button>
         </nav>
     `,

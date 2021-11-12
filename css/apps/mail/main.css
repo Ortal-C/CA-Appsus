@@ -4,45 +4,20 @@
     border: none;
     width:1rem;
 }
-
-.mail-app {
-    font-size: 16px;
-	background-color: #fff;
+.btn-mail{
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
 }
-.mail-app > * {
-	padding: 20px 0;
-}
-.btn-mail-compose {
-	border: 1px solid #cdcecf;
-    background-color: #fff;
-    border-radius: 10em;
-    text-align: center;
-    width: 180px;
-}
-
 .mail-main-area{
     width: 90vw;
 }
 li{
     width:100%;
 }
-
-.mail-main-nav .btn-mail:hover {
-    border-end-end-radius: 10em;
-    border-start-end-radius: 10em;
-    background-color: #f5f7f7;
-}
-.mail-main-nav >*:focus {
-    border-end-end-radius: 10em;
-    border-start-end-radius: 10em;
-    background-color: #e8f2fa;
-}
-
 .mail-main-area {
 	flex-grow: 0.9;
-}
-.mail-main-area-nav{
-    
 }
 
 .mail-list{
@@ -50,13 +25,26 @@ li{
 }
 
 .mail-preview{
-    max-width: 80%;
+    min-width: 100%;
     min-height: 50px;
     border-bottom: 1px solid rgb(236, 236, 236);
+}
+.mail-preview{
+    padding: 20px 0px;
+}
+.mail-preview p{
+    min-width: 100%;
+    padding-inline-start: 10px;
+}
+.mail-preview .long-text{
+    min-width: 100%;
 }
 
 .mail-preview >* {
     margin:0 5px;
+}
+.mail-content{
+    flex-direction: column ;
 }
 
 .mail-preview:hover{
@@ -145,30 +133,17 @@ textarea:disabled{
         flex-direction: column;
         max-width: 90%;
     }
-    .mail-main-menu {
+    .mail-main-nav {
         display:flex;
         justify-content: space-between;
         background-color: #fff;
     }
+    .mail-main-nav span {
+        display: none
+    }
     .btn-mail{
         width: 30px;
         height: 30px;
-        background-color: transparent;
-        border: none;
-        text-align: left;
-    }
-    .mail-content{
-        flex-direction: column;
-    }
-    .mail-preview{
-        min-width: 100%;
-    }
-    .mail-preview p{
-        min-width: 100%;
-        padding-inline-start: 10px;
-    }
-    .mail-preview .long-text{
-        min-width: 95%;
     }
     .actions{
         max-width: 90%;
@@ -177,22 +152,38 @@ textarea:disabled{
         height:auto;
         width: 80%;
     }
+
 }
 
 /* TABLET */
 @media (min-width: 500px){
-    .btn-mail-menu{
-        display: none;
+    .mail-app {
+        font-size: 16px;
+        background-color: #fff;
     }
-
+    .mail-app > * {
+        padding: 20px 0;
+    }
     .btn-mail{
-        width: 180px;
-        background-color: transparent;
-        border: none;
-        height: 50px;
-        text-align: left;
+        width: 100px;
     }
-
+    .btn-mail-compose {
+        width: 100px;
+        border: 1px solid #cdcecf;
+        background-color: #fff;
+        border-radius: 10em;
+        text-align: center;
+    }
+    .mail-main-nav .btn-mail:hover {
+        border-end-end-radius: 10em;
+        border-start-end-radius: 10em;
+        background-color: #f5f7f7;
+    }
+    .mail-main-nav >*:focus {
+        border-end-end-radius: 10em;
+        border-start-end-radius: 10em;
+        background-color: #e8f2fa;
+    }
     .mail-main-nav {
         background-color: #fff;
         flex-direction: column;
@@ -204,6 +195,27 @@ textarea:disabled{
 
 
 /* DESKTOP */
-@media (min-width: 769px){
+@media (min-width: 980px){
 
+    .btn-mail{
+        width: 180px;
+    }
+    .btn-mail-compose {
+        width: 180px;
+    }
+    .mail-content{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .mail-preview{
+        padding: 20px 0px;
+    }
+    .mail-preview p{
+        min-width: auto;
+        padding-inline-start: 10px;
+    }
+    .mail-preview .long-text{
+        min-width: auto;
+    }
+    
 }
