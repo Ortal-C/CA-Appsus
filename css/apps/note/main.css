@@ -173,6 +173,7 @@
 	}
 	.note-add input {
 		width: unset;
+		font-size: 14px;
 	}
 	.colors {
 		width: 116px;

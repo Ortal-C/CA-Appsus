@@ -64,7 +64,7 @@ input {
 
 .user-msg {
 	position: absolute;
-	width: 250px;
+	width: 300px;
 	height: 65px;
 	top: 10px;
 	right: 10px;
@@ -80,6 +80,7 @@ input {
 }
 
 .user-msg p {
+	text-align: center;
 	font-size: 16px;
 	line-height: 45px;
 }
