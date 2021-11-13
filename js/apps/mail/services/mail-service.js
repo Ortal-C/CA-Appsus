@@ -14,7 +14,6 @@ export const mailService = {
     save,
     getEmptyMail,
     getById,
-    getNextCarId,
     getLoggedUser,
 };
 
