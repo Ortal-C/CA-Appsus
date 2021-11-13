@@ -97,7 +97,10 @@ export default {
                 newMail.body = txt;
             }
             mailService.postNew(newMail)
-            this.$router.push(`/mail/${newMail.id}`);
+                .then(mail =>{
+                    this.$router.push(`/mail/${mail.id}`);    
+                });
+            
         },
         setFilter(filterBy) {
             this.filterBy = filterBy
