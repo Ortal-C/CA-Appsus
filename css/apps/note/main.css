@@ -11,12 +11,28 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	/* display: grid;
-	grid-template-columns: repeat(4, minmax(250px, 1fr)); */
+	/* overflow-y: scroll; */
+	/* height: 64vh; */
 	padding-inline-start: 0;
 	margin-block-start: 0;
 	margin-block-end: 0;
 }
+
+/* .note-list::-webkit-scrollbar {
+	width: 15px;
+}
+
+.note-list::-webkit-scrollbar-track {
+	margin-top: 5px;
+	border-radius: 8px;
+	background-color: #e9e9e9;
+}
+
+.note-list::-webkit-scrollbar-thumb {
+	height: 15px;
+	border-radius: 8px;
+	background-color: #acd5fd;
+} */
 
 /* NOTE LIST li */
 
@@ -30,7 +46,11 @@
 /* NOTE SECTION */
 
 .note-preview {
-	max-width: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	width: 250px;
 	padding: 10px;
 	border-radius: 10px;
 }
@@ -44,7 +64,7 @@
 }
 
 .note-preview img {
-	height: 175px;
+	height: 150px;
 	border-radius: 10px;
 	margin: 5px 0;
 }
@@ -116,7 +136,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding: 2%;
 	min-height: 100px;
 	border-radius: 5px;
@@ -167,7 +187,7 @@
 		justify-content: space-around;
 	}
 	.note-preview img {
-		height: 100px;
+		height: 85px;
 	}
 	.note-add input {
 		width: unset;

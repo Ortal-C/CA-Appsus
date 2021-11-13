@@ -19,7 +19,6 @@ export default {
     },
     created() {
         this.loadNotes()
-        console.log('Check git');
     },
     methods: {
         createSuccessMsg(txt) {

@@ -13,14 +13,14 @@ export default {
         </ul>
     </section>
     `,
-    methods:{
+    methods: {
         remove(mailId) {
             mailService.remove(mailId)
-                .then(() => this.$emit('change'))
+                .then(() => this.$emit('change', 'Mail removed successfully.'))
         },
-        update(mail){
+        update(mail) {
             mailService.save(mail)
-                .then(() => this.$emit('change'))
+                .then(() => this.$emit('change', 'Mail updated successfully.'))
         },
     },
     components: {

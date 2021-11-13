@@ -1,5 +1,4 @@
 import homePage from './pages/home-page.cmp.js'
-import aboutPage from './pages/about-page.cmp.js'
 
 //mailApp routes
 import mailApp from './apps/mail/pages/mail-app.cmp.js'
@@ -13,10 +12,6 @@ const routes = [
     component: homePage,
   },
   {
-    path: '/about',
-    component: aboutPage,
-  },
-  {
     path: '/mail',
     component: mailApp,
     children: [
@@ -24,10 +19,6 @@ const routes = [
         path: ':mailId?',
         component: mailApp,
       },
-      // {
-      //   path: ':directory',
-      //   component: mailApp,
-      // },
     ],
   },
   {

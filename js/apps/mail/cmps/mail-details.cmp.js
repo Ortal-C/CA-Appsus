@@ -84,17 +84,17 @@ export default {
         toggleStar() {
             this.mail.criteria.isStarred = !this.mail.criteria.isStarred;
             mailService.save(this.mail)
-                .then(() => this.$emit('change'))
+                .then(() => this.$emit('change', `Mail has ${this.mail.criteria.isStarred ? 'starred' : 'ununstarred'}.`))
             },
         toggleRead() {
             this.mail.criteria.isRead = !this.mail.criteria.isRead;
             mailService.save(this.mail)
-                .then(() => this.$emit('change'))
+                .then(() => this.$emit('change', `Mail signed as ${this.mail.criteria.isRead ? 'read' : 'unread'}.`))
         },
         remove() {
             mailService.remove(this.mail.id)
                 .then(() => {
-                    this.$emit('change')
+                    this.$emit('change', 'Mail removed successfully.')
                     this.goToList()
 
                 })
@@ -103,7 +103,7 @@ export default {
             if (toSend) this.mail.criteria.status = 'sent'
             mailService.save(this.mail)
                 .then(() => {
-                    this.$emit('change')
+                    this.$emit('change', `Mail has ${toSend ? 'sent' : 'saved'} successfully.`)
                     this.goToList()
                 })
         },

@@ -23,7 +23,6 @@ export default {
                 <span class="fas fa-font" @click="changeType('note-txt')"></span>
                 <span class="far fa-image" @click="changeType('note-img')"></span>
                 <span class="fas fa-list" @click="changeType('note-todos')"></span>
-                <span class="fab fa-youtube"></span>
             </div>
          </section>
     `,

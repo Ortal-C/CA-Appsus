@@ -62,13 +62,12 @@ li{
 }
 
 .mail-input {
-    font-family: fa, Lato;
-	border: 1px solid #cdcecf;
-    background-color: #fff;
+    font-family:inherit;
+    border: 1px solid #cdcecf;
+    background-color: transparent;
     border-radius: 10em;
     padding: 5px 10px;
-    width: 33%;
-    /* border: 1px solid blueviolet; */
+    width: 50%;
 }
 .mail-details{
     display: flex;
@@ -125,6 +124,15 @@ textarea:disabled{
     height: 40px;
 }
 
+select {
+    border-radius: 10em;
+	border: 1px solid #cdcecf;
+    background-color: transparent;
+    padding: 5px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
 /* BP */
 
 /* MOBILE */
@@ -152,7 +160,6 @@ textarea:disabled{
         height:auto;
         width: 80%;
     }
-
 }
 
 /* TABLET */
