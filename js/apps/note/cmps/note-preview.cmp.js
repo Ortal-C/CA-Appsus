@@ -15,6 +15,7 @@ export default {
                 <i title="Delete" class="fas fa-trash" @click="remove(note.id)"></i>
                 <i title="Change color" class="fas fa-palette" @click="openColors"></i>
                 <i title="Duplicate" class="fas fa-copy" @click="duplicate"></i>
+                <button @click="sendAsMail">mail</button>
             </div>
             <div class="colors-container">
                 <section class="colors" v-if="isShowColors">
@@ -60,6 +61,13 @@ export default {
             const duplicatedNote = JSON.parse(JSON.stringify(this.note));
             noteService.add(duplicatedNote)
                 .then(() => this.$emit('duplicate'))
+        },
+        sendAsMail() {
+            console.log('Mailing');
+            if (this.note.type === 'note-txt') {
+                const txt = this.note.info.txt
+                this.$router.push(`/mail/txt=${txt}`);
+            }
         }
     },
     computed: {
