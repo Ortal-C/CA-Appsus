@@ -34,6 +34,11 @@ export default {
     },
     created() {
         this.note = noteService.getEmptyNote(this.type)
+        const txt = this.$route.query;
+        if (txt.body) {
+            this.note.info.txt = txt.body;
+            this.add()
+        }
     },
     mounted() {
         this.$refs.input.focus()

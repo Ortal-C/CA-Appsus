@@ -2,15 +2,15 @@
 
 @font-face {
 	font-family: Lato;
-	src: url(/fonts/lato/Lato-Regular.ttf);
+	src: url(../../fonts/lato/Lato-Regular.ttf);
 }
 
 @font-face {
 	font-family: fa-solid;
-	src: url(/fonts/fa/fa-solid-900.ttf);
+	src: url(../../fonts/fa/fa-solid-900.ttf);
 }
 
 @font-face {
 	font-family: Gurdano;
-	src: url(/fonts/gurdano/gurdano.otf);
+	src: url(../../fonts/gurdano/gurdano.otf);
 }

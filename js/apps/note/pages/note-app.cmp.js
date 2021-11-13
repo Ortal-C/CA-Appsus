@@ -1,4 +1,3 @@
-//NOTES PAGE
 import { noteService } from '../services/note-service.js'
 import { eventBus } from '../../../services/event-bus-service.js'
 import noteAdd from '../cmps/note-add.cmp.js'
@@ -18,12 +17,7 @@ export default {
         }
     },
     created() {
-        this.loadNotes()
-        const queryString = window.location.search;
-        // const urlParams = new URLSearchParams(queryString);
-        // console.log(queryString);
-        // const lat = urlParams.get('lat');
-        // const lng = urlParams.get('lng');
+        this.loadNotes();
     },
     methods: {
         createSuccessMsg(txt) {
