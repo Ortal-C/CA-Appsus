@@ -20,6 +20,9 @@ export default {
                     <button class="btn-mail-icon" @click="remove()" >
                         <i class="fas fa-trash" @click="toggleRead()" ></i>
                     </button>
+                    <button class="btn-mail-icon" @click="saveAsNote()" >
+                        <i class="fas fa-sticky-note"></i>
+                    </button>
                 </section>
             </header>
             <section class="mail-details-row">
@@ -106,6 +109,13 @@ export default {
                     this.goToList()
                 })
         },
+        saveAsNote() {
+            const to = this.mail.to
+            const from = this.mail.from
+            const subject = this.mail.subject
+            const body = this.mail.body
+            this.$router.push(`/note?to=${to}&from=${from}&subject=${subject}&body=${body}`);
+        }
     },
     computed: {
         styledStarredMail() {

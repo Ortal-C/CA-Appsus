@@ -21,14 +21,9 @@ function getLoggedUser(){
     return LOGGED_USER;
 }
 
-function query(filterBy = {}) {
+function query() {
     return storageService.query(MAILS_KEY)
-        .then(mails => {
-            if (filterBy.topCars) {
-                mails = mails.slice(0, 2);
-            }
-            return mails;
-        });
+        .then(mails => {return mails;});
 }
 
 function postNew(mail) {
@@ -75,7 +70,7 @@ function _createMails() {
                 id: 'sfv0I',
                 subject: 'Just want you to remember...',
                 body: 'WE WERE ON A BREAK! Also, say hi from me to the guys. regards! Ross',
-                sentAt:1416694920000,
+                sentAt:1621843119000,
                 from: 'Ross Geller',
                 to: LOGGED_USER.mail,
                 criteria: {
@@ -90,7 +85,7 @@ function _createMails() {
                 id:'tRHD8',
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
-                sentAt: 1630880520000,
+                sentAt: 1636826359000,
                 from: 'BFF',
                 to: LOGGED_USER.mail,
                 criteria: {
@@ -105,7 +100,7 @@ function _createMails() {
                 id: '2c0lb',
                 subject: 'SALE in our store',
                 body: `Check out our new summer-collection`,
-                sentAt: 1625423793000,
+                sentAt: 1633852719000,
                 from: 'no-reply@store.com',
                 to: LOGGED_USER.mail,
                 criteria: {
