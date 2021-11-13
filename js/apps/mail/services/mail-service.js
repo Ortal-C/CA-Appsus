@@ -21,14 +21,9 @@ function getLoggedUser(){
     return LOGGED_USER;
 }
 
-function query(filterBy = {}) {
+function query() {
     return storageService.query(MAILS_KEY)
-        .then(mails => {
-            if (filterBy.topCars) {
-                mails = mails.slice(0, 2);
-            }
-            return mails;
-        });
+        .then(mails => {return mails;});
 }
 
 function postNew(mail) {

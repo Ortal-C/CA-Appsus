@@ -18,17 +18,6 @@ export const noteService = {
 function query() {
     return storageService.query(NOTES_KEY)
 }
-
-// function query(filterBy = {}) {
-//     return storageService.query(CARS_KEY)
-//         .then(cars => {
-//             if (filterBy.topCars) {
-//                 cars = cars.slice(0, 2);
-//             }
-//             return cars;
-//         });
-// }
-
 function remove(noteId) {
     // return Promise.reject('Big balagan!')
     return storageService.remove(NOTES_KEY, noteId);
