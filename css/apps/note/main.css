@@ -178,12 +178,8 @@
 		width: 28px;
 		height: 30px;
 	}
-	.note-preview {
-		min-height: 160px;
-		/* min-width: unset; */
-		max-width: 145px;
-	}
 	.note-preview .actions {
+		max-width: 100%;
 		justify-content: space-around;
 	}
 	.note-preview img {
