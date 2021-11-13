@@ -96,7 +96,6 @@ export default {
                 .then(() => {
                     this.$emit('change', 'Mail removed successfully.')
                     this.goToList()
-
                 })
         },
         save(toSend) {

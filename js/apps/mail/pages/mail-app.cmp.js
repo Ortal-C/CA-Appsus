@@ -32,7 +32,12 @@ export default {
         }
     },
     created() {
-        this.loadMails();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const txt = +urlParams.get('txt');
+        if (txt) return this.composeMail();
+        else this.loadMails();
+        
     },
     methods: {
         loadMails(msg) {
@@ -88,8 +93,11 @@ export default {
                 this.$router.push('/mail');
             }
         },
-        composeMail() {
+        composeMail(txt) {
             let newMail = mailService.getEmptyMail();
+            if (txt) {
+                newMail.body = txt;
+            }
             mailService.postNew(newMail)
             this.$router.push(`/mail/${newMail.id}`);
         },
