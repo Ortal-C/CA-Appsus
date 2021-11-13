@@ -50,14 +50,6 @@ function getById(mailId) {
     return storageService.get(MAILS_KEY, mailId);
 }
 
-function getNextCarId(mailId) {
-    return query()
-        .then(mails => {
-            const idx = mails.findIndex(mail => mail.id === mailId);
-            return (idx === mails.length - 1) ? mails[0].id : mails[idx + 1].id;
-        });
-}
-
 function getEmptyMail() {
     return {
         id: utilService.makeId(),
@@ -208,13 +200,4 @@ function _createMails() {
         utilService.saveToStorage(MAILS_KEY, mails);
     }
     return mails;
-}
-
-function _createCar(vendor, maxSpeed = 250) {
-    const car = {
-        id: utilService.makeId(),
-        vendor,
-        maxSpeed,
-    };
-    return car;
 }
