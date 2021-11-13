@@ -66,7 +66,7 @@ export default {
             console.log('Mailing');
             if (this.note.type === 'note-txt') {
                 const txt = this.note.info.txt
-                this.$router.push(`/mail/txt=${txt}`);
+                this.$router.push(`/mail?txt=${txt}`);
             }
         }
     },

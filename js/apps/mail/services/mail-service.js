@@ -73,10 +73,10 @@ function _createMails() {
         mails = [
             {
                 id: 'sfv0I',
-                subject: 'Check out this vacation',
-                body: 'Hi mami, I really need a vacation. please do something',
+                subject: 'Just want you to remember...',
+                body: 'WE WERE ON A BREAK! Also, say hi from me to the guys. regards! Ross',
                 sentAt:1416694920000,
-                from: 'Mami',
+                from: 'Ross Geller',
                 to: LOGGED_USER.mail,
                 criteria: {
                     status: 'inbox',
@@ -151,18 +151,18 @@ function _createMails() {
             },
             {
                 id: 'f3HEq',
-                subject: 'Stand By Me - COVER!',
-                body: `Check out this song-cover! https://www.youtube.com/watch?v=dU2UUkYoeBs`,
+                subject: 'Car that runs on water man!',
+                body: `I'm telling you, the government has a car that runs on water, man. They just don't want us to know, because then we'd buy all the water. Then there'd be nothing left to drink but beer! And the government knows that beer... set us free.`,
                 sentAt: 1630083086900,
                 from: LOGGED_USER.mail,
-                to: 'John',
+                to: 'Eric, Fez, Donna, Jackie, Kelso',
                 criteria: {
                     status: 'sent',
                     txt: 'puki',
                     isRead: false,
                     isStarred: true,
                     lables: ['friends', 'romantic','memories']
-                },
+                },                
             },
             {
                 id: 'I47aH',

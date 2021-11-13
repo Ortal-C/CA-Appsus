@@ -1,8 +1,8 @@
 import { utilService } from '../../../services/util-service.js'
 import longText from '../../../cmps/long-text.cmp.js'
-export default{
-    name:'mail-preview',
-    props:['mail','loggedUser'],
+export default {
+    name: 'mail-preview',
+    props: ['mail', 'loggedUser'],
     template: `
     <div class="mail-preview flex align-center" style="width:100%;">
         <button class="btn-mail-icon" @click="toggleStar()">
@@ -20,56 +20,63 @@ export default{
         <button class="btn-mail-icon" @click="remove()" >
             <i class="fas fa-trash" @click="toggleRead()" ></i>
         </button>
+        <button class="btn-mail-icon" @click="saveAsNote()" >
+            <i class="fas fa-sticky-note"></i>
+        </button>
     </div>
     `,
-    data(){
-        return{
+    data() {
+        return {
             currMail: this.mail,
             isBodyLong: this.mail.body.length >= 50,
         }
     },
-    methods:{
-        toggleStar(){
+    methods: {
+        toggleStar() {
             this.currMail.criteria.isStarred = !this.currMail.criteria.isStarred;
             this.$emit('update', this.currMail)
         },
-        toggleRead(){
+        toggleRead() {
             this.currMail.criteria.isRead = !this.currMail.criteria.isRead;
             this.$emit('update', this.currMail)
         },
         remove() {
             this.$emit('remove', this.currMail.id)
         },
+        saveAsNote() {
+            const to = this.currMail.to
+            const from = this.currMail.from
+            const subject = this.currMail.subject
+            const body = this.currMail.body
+            this.$router.push(`/note?to=${to}&from=${from}&subject=${subject}&body=${body}`);
+        }
     },
     computed: {
-        styledStarredMail(){
-            return {starred: this.currMail.criteria.isStarred}
+        styledStarredMail() {
+            return { starred: this.currMail.criteria.isStarred }
         },
-        mailReadModeDisplay(){
+        mailReadModeDisplay() {
             return this.currMail.criteria.isRead ? "fas fa-envelope-open" : "fas fa-envelope"
-            
+
         },
-        styledUnreadMail(){
-            return {unread: !this.currMail.criteria.isRead}
+        styledUnreadMail() {
+            return { unread: !this.currMail.criteria.isRead }
         },
-        mailContactToDisplay(){
+        mailContactToDisplay() {
             return (this.currMail.from !== this.loggedUser.mail)
-            ? this.currMail.from
-            : 'To: '+this.currMail.to
+                ? this.currMail.from
+                : 'To: ' + this.currMail.to
         },
-        mailBodyToDisplay(){
+        mailBodyToDisplay() {
             if (this.isBodyLong) return this.currMail.body.substr(0, 49) + '...';
             else return this.currMail.body
         },
-        mailSentDateToDisplay(){
+        mailSentDateToDisplay() {
             return utilService.formatDate(this.currMail.sentAt);
         }
     },
-    mounted(){
-        //FOCUS SOMETHING
-    },
-    watch:{},
-    components:{
+    watch: {},
+    components: {
         longText,
     },
 

@@ -32,10 +32,8 @@ export default {
         }
     },
     created() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const txt = +urlParams.get('txt');
-        if (txt) return this.composeMail();
+        const txt = this.$route.query.txt;
+        if (txt) return this.composeMail(txt);
         else this.loadMails();
         
     },
