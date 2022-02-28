@@ -110,15 +110,15 @@ function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY);
     if (!notes || !notes.length) {
         notes = [];
-        notes.push(_createTxtNote('Don\'t give up on your dreams. Go back to sleep', '#cbf0f8'))
-        notes.push(_createTxtNote('Get your shit together', '#aecbfa'));
-        notes.push(_createTxtNote('I\'m not lazy, i\'m on energy saving mode', '#cbf0f8'))
-        notes.push(_createTxtNote('Life is a soup and i\'m a fork', '#aecbfa'));
-        notes.push(_createTxtNote('Take a pill at 22:00', '#cbf0f8'));
-        notes.push(_createImgNote("https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80", 'Cutie', '#aecbfa'))
-        notes.push(_createImgNote("https://images.unsplash.com/photo-1503756234508-e32369269deb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=435&q=80", 'Vacation asap', '#cbf0f8'))
-        notes.push(_createImgNote("https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1228&q=80", 'Buy some flowers for myself', '#aecbfa'))
-        notes.push(_createImgNote("https://images.unsplash.com/photo-1537274942065-eda9d00a6293?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80", 'Buy new clothes', '#cbf0f8'))
+        notes.push(_createTxtNote(`Don't give up on your dreams. Go back to sleep`, '#cbf0f8'))
+        notes.push(_createTxtNote(`Do something great.`, '#aecbfa'));
+        notes.push(_createTxtNote(`I'm not lazy, i'm on energy saving mode.`, '#cbf0f8'))
+        notes.push(_createTxtNote(`Life is a soup and i'm a fork`, '#aecbfa'));
+        notes.push(_createTxtNote(`Take a pill at 22:00`, '#cbf0f8'));
+        notes.push(_createImgNote("https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80", `Cutie`, '#aecbfa'))
+        notes.push(_createImgNote("https://images.unsplash.com/photo-1503756234508-e32369269deb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=435&q=80", `Vacation asap`, '#cbf0f8'))
+        notes.push(_createImgNote("https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1228&q=80", `Buy some flowers for myself`, '#aecbfa'))
+        notes.push(_createImgNote("https://images.unsplash.com/photo-1537274942065-eda9d00a6293?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80", `Buy new clothes`, '#cbf0f8'))
         utilService.saveToStorage(NOTES_KEY, notes);
     }
     return notes;
